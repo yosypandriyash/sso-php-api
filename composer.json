@@ -1,0 +1,78 @@
+{
+    "name": "codeigniter4/codeigniter4",
+    "type": "project",
+    "description": "The CodeIgniter framework v4",
+    "homepage": "https://codeigniter.com",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:pcstate/api-mail-services.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:pcstate/api-utils.git"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "kint-php/kint": "^4.2",
+        "laminas/laminas-escaper": "^2.9",
+        "psr/log": "^1.1",
+        "pcstate/api-mail-services": "dev-master",
+        "pcstate/api-utils": "dev-master"
+    },
+    "require-dev": {
+        "scssphp/scssphp": "^1.11.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "4.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeIgniter\\": "system/",
+            "Core\\": "PcStateAccounts/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeIgniter\\": "tests/system/",
+            "CodeIgniter\\AutoReview\\": "tests/AutoReview/",
+            "Utils\\": "utils/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "CodeIgniter\\ComposerScripts::postUpdate",
+            "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
+        ],
+        "analyze": "phpstan analyse",
+        "test": "phpunit",
+        "cs": [
+            "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.user-guide.php",
+            "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.no-header.php",
+            "php-cs-fixer fix --ansi --verbose --dry-run --diff"
+        ],
+        "cs-fix": [
+            "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.user-guide.php",
+            "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.no-header.php",
+            "php-cs-fixer fix --ansi --verbose --diff"
+        ]
+    }
+}

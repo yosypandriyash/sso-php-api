@@ -1,0 +1,97 @@
+body.dark-mode {
+  --darkGrey: #222;
+  --darknessWhite: #ddd;
+
+  background-color: var(--darkGrey);
+  color: var(--darknessWhite);
+
+  .navbar.navbar-mobile {
+    background-color: rgba(0, 0, 0, 0.85);
+
+    ul {
+      background-color: rgb(0, 0, 0, 0);
+
+      li a {
+        color: var(--darknessWhite);
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .subtitle-a,
+  .title-s {
+    color: var(--darknessWhite);
+  }
+
+  .phone-number {
+    background-color: $primary !important;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--darkGrey);
+  }
+
+  .about-mf .skill-mf span {
+    color: rgb(165, 165, 165);
+  }
+
+  .navbar-b.navbar-reduce {
+    background-color: var(--darkGrey);
+
+    .navbar-brand {
+      color: var(--darknessWhite);
+    }
+
+    .nav-link {
+
+      color: var(--darknessWhite);
+      &.active {
+        color: var(--darknessWhite);
+      }
+    }
+  }
+
+  .service-box .s-description {
+    color: var(--darknessWhite);
+    filter: opacity(.7);
+  }
+
+  .card {
+    background-color: rgba(0,0,0,0.5);
+
+    .card-title,
+    .card-description,
+    .card-footer, a {
+      color: var(--darknessWhite);
+    }
+  }
+
+  .work-box {
+    background: transparent;
+  }
+
+  .box-shadow-full,
+  .service-box,
+  .work-content {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .overlay-mf {
+    opacity: 0.8;
+    background-color: #000;
+  }
+
+  .form-control {
+    border: none;
+    background-color: #131313;
+    color: var(--darknessWhite);
+  }
+
+  .gslide-description {
+    background-color: rgba(0, 0, 0, 0.76);
+
+    .gslide-title {
+      color: var(--darknessWhite);
+    }
+
+  }
+}
