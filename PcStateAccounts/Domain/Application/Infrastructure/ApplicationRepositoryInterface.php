@@ -11,4 +11,6 @@ interface ApplicationRepositoryInterface {
     public function getApplicationByUniqueId(string $applicationUniqueId): ?Application;
 
     public function saveEntity(Application $application): Application;
+
+    public function validateApplicationRequest(string $applicationUniqueId, string $applicationApiKey): bool;
 }

@@ -1,8 +1,7 @@
 <?php
 
-namespace Core\Application\User\Create\UserRegistration;
+namespace Core\Application\User\Validate\UserValidation;
 
-use App\Helpers\StringHelperInterface;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
 use Core\Application\ApplicationServiceInterface;
@@ -10,25 +9,23 @@ use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\Application\Service\ApplicationValidationDomainService;
 use Core\Domain\ApplicationUser\Infrastructure\ApplicationUserRepositoryInterface;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
-use Core\Domain\User\Service\UserRegistrationDomainService;
+use Core\Domain\User\Service\UserValidationDomainService;
 
-class UserRegistrationService implements ApplicationServiceInterface {
+class UserValidationService implements ApplicationServiceInterface {
 
-    private UserRegistrationDomainService $userRegistrationDomainService;
+    private UserValidationDomainService $userValidationDomainService;
     private ApplicationValidationDomainService $applicationValidationDomainService;
 
     public function __construct(
         UserRepositoryInterface $userRepository,
         ApplicationRepositoryInterface $applicationRepository,
-        ApplicationUserRepositoryInterface $applicationUserRepository,
-        StringHelperInterface $stringHelper
+        ApplicationUserRepositoryInterface $applicationUserRepository
     )
     {
-        $this->userRegistrationDomainService = new UserRegistrationDomainService(
+        $this->userValidationDomainService = new UserValidationDomainService(
             $userRepository,
             $applicationRepository,
-            $applicationUserRepository,
-            $stringHelper
+            $applicationUserRepository
         );
 
         $this->applicationValidationDomainService = new ApplicationValidationDomainService(
@@ -36,7 +33,7 @@ class UserRegistrationService implements ApplicationServiceInterface {
         );
     }
 
-    /** @var UserRegistrationRequest $request */
+    /** @var UserValidationRequest $request */
     public function execute(ApplicationRequestInterface $request): ApplicationResponseInterface
     {
         try {
@@ -46,22 +43,24 @@ class UserRegistrationService implements ApplicationServiceInterface {
                 $request->getApiKey()
             );
 
-            // Register User
-            $user = $this->userRegistrationDomainService->registerUser(
+            // Validate User
+            $this->userValidationDomainService->validateUser(
                 $request->getAppUniqueId(),
-                $request->getUsername(),
-                $request->getFullName(),
                 $request->getEmail(),
                 $request->getPassword()
             );
 
-            return UserRegistrationResponse::create(
-                $user->toArray(),
+            return UserValidationResponse::create(
+                ['successValidated' => true],
                 true
             );
 
         } catch (\Exception $exception) {
-            return UserRegistrationResponse::create([], false, $exception->getMessage());
+            return UserValidationResponse::create(
+                ['successValidated' => true],
+                false,
+                $exception->getMessage()
+            );
         }
     }
 }

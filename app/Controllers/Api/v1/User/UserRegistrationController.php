@@ -49,6 +49,7 @@ class UserRegistrationController extends UserApiController {
             ))->execute(
                 UserRegistrationRequest::create(
                     $bodyParams['applicationUniqueId'],
+                    $bodyParams['applicationApiKey'],
                     $bodyParams['email'],
                     $bodyParams['username'],
                     $bodyParams['fullName'],

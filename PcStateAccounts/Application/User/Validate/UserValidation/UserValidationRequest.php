@@ -1,31 +1,25 @@
 <?php
 
-namespace Core\Application\User\Create\UserRegistration;
+namespace Core\Application\User\Validate\UserValidation;
 
 use Core\Application\ApplicationRequestInterface;
 
-class UserRegistrationRequest implements ApplicationRequestInterface {
+class UserValidationRequest implements ApplicationRequestInterface {
 
     private string $appUniqueId;
     private string $apiKey;
     private string $email;
-    private string $username;
-    private string $fullName;
     private string $password;
 
     private function __construct(
         string $appUniqueId,
         string $apiKey,
         string $email,
-        string $username,
-        string $fullName,
         string $password
     ) {
         $this->appUniqueId = $appUniqueId;
         $this->apiKey = $apiKey;
         $this->email = $email;
-        $this->username = $username;
-        $this->fullName = $fullName;
         $this->password = $password;
     }
 
@@ -33,12 +27,10 @@ class UserRegistrationRequest implements ApplicationRequestInterface {
         string $appUniqueId,
         string $apiKey,
         string $email,
-        string $username,
-        string $fullName,
         string $password
     ): self
     {
-        return new static ($appUniqueId, $apiKey, $email, $username, $fullName, $password);
+        return new static ($appUniqueId, $apiKey, $email, $password);
     }
 
     public function getAppUniqueId(): string
@@ -54,16 +46,6 @@ class UserRegistrationRequest implements ApplicationRequestInterface {
     public function getEmail(): string
     {
         return $this->email;
-    }
-
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    public function getFullName(): string
-    {
-        return $this->fullName;
     }
 
     public function getPassword(): string

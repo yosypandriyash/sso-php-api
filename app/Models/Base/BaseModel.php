@@ -221,23 +221,45 @@ class BaseModel extends Model {
 
     public function getFirst($options = [])
     {
+        $options = $this->parseMapperKeys($options);
         $result = [$this->db->table($this->table)->getWhere($options)->getFirstRow($this->returnType)];
         return $this->parseResultToClassObject($result, true);
     }
 
+    private function parseMapperKeys($filter)
+    {
+        if (!is_array($filter)) {
+            $keyName = $this->getMapper($filter);
+
+            if ($keyName !== null) {
+                return $keyName;
+            }
+
+            return $filter;
+        }
+
+        foreach ($filter as $key => $value) {
+            $keyName = $this->getMapper($key);
+
+            if ($keyName !== null) {
+                $filter[$keyName] = $value;
+                unset($filter[$key]);
+            }
+        }
+
+        return $filter;
+    }
+
     public function getOneByKey($key, $value)
     {
-        $keyName = $this->getMapper($key);
-
-        if ($keyName !== null) {
-            $key = $keyName;
-        }
+        $key = $this->parseMapperKeys($key);
 
         $queryResult = $this->db->table($this->table)->getWhere([$key => $value])->getFirstRow($this->returnType);
         return $this->parseResultToClassObject([$queryResult], true);
     }
 
     public function getAllByKey($key, $value) {
+        $key = $this->parseMapperKeys($key);
         $queryResult = $this->db->table($this->table)->getWhere([$key => $value])->getResult($this->returnType);
         return $this->parseResultToClassObject($queryResult);
     }

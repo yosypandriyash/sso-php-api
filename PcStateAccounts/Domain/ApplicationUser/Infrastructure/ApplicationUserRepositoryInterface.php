@@ -6,9 +6,11 @@ use Core\Domain\ApplicationUser\ApplicationUser;
 
 interface ApplicationUserRepositoryInterface {
 
+    public function getApplicationUsersCountFilteredByAppIdEmail(string $applicationUniqueId, string $userEmail): int;
+
     public function getAllByUserUniqueFields(string $userEmail, string $userName, string $applicationUniqueId): array;
 
-    public function getApplicationUsersCount(string $applicationUniqueId, string $email): int;
+    public function getApplicationUserCount(int $applicationId, int $userId): int;
 
     public function saveEntity(ApplicationUser $applicationUser): ApplicationUser;
 

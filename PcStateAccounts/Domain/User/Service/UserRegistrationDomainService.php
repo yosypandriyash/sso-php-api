@@ -59,13 +59,14 @@ class UserRegistrationDomainService extends BaseDomainService {
         }
 
         // Prevent duplicated user registration
-        $match = $this->userRepository->getOneByUserNameAndEmail($username, $email);
+        $user = $this->userRepository->getOneByUserNameAndEmail($username, $email);
 
-        if ($match !== null) {
+        if ($user !== null) {
             throw new DuplicatedUserException();
         }
 
-        $matches = $this->applicationUserRepository->getApplicationUsersCount($applicationUniqueId, $email);
+        $matches = $this->applicationUserRepository->getApplicationUsersCountFilteredByAppIdEmail($applicationUniqueId, $email);
+
         if ($matches > ApplicationUser::MAXIMUM_ALLOWED_DUPLICATED_APPLICATION_USERS) {
             throw new ApplicationUserDuplicatedException();
         }

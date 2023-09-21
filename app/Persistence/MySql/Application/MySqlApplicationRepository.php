@@ -24,6 +24,16 @@ class MySqlApplicationRepository extends ApplicationsModel implements Applicatio
         return MySqlModelToDomainEntityTransformer::execute(ApplicationsModel::class, $application);
     }
 
+    public function validateApplicationRequest(string $applicationUniqueId, string $applicationApiKey): bool
+    {
+        $application = $this->getFirst([
+            'uniqueId' => $applicationUniqueId,
+            'apiKey' => $applicationApiKey
+        ]);
+
+        return $application instanceof ApplicationsModel;
+    }
+
     /**
      * @param string $applicationUniqueId
      * @return Application|null

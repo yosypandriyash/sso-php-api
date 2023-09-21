@@ -13,10 +13,14 @@ use Exception;
 
 class MySqlApplicationUserRepository extends ApplicationUsersModel implements ApplicationUserRepositoryInterface
 {
-
-    public function getApplicationUsersCount(string $applicationUniqueId, string $userEmail): int
+    public function getApplicationUsersCountFilteredByAppIdEmail(string $applicationUniqueId, string $userEmail): int
     {
-        return parent::getApplicationUsersCount($applicationUniqueId, $userEmail);
+        return parent::getApplicationUsersCountFilteredByAppIdEmail($applicationUniqueId, $userEmail);
+    }
+
+    public function getApplicationUserCount(int $applicationId, int $userId): int
+    {
+        return parent::getApplicationUserCount($applicationId, $userId);
     }
 
     /**

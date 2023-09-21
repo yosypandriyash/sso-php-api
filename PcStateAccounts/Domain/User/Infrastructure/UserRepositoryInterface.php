@@ -6,7 +6,9 @@ use Core\Domain\User\User;
 
 interface UserRepositoryInterface {
 
-    public function getOneByUserNameAndEmail($userName, $email): ?User;
+    public function getOneByUserNameAndEmail(string $userName,string $email): ?User;
+
+    public function getOneByEmailAndPassword(string $email, string $password): ?User;
 
     public function saveEntity(User $user): User;
 
