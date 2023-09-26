@@ -76,6 +76,7 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
         $userModel = $this->getFirst([
             'email' => $email,
             'password' => $password,
+            'deletedAt' => null
         ]);
 
         return $userModel !== null ? MySqlModelToDomainEntityTransformer::execute(UsersModel::class, $userModel): null;
@@ -102,6 +103,7 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
     private function getUserByUniqueId(string $uniqueId): ?UsersModel
     {
         return $this->getFirst([
+            'deletedAt' => null,
             'uniqueId' => $uniqueId,
         ]);
     }

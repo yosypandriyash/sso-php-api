@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "4f98e718-30b3-42f9-9111-2b8fe4ef9d07",
+		"name": "pcstate-accounts.web.local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29692606"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "update-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fullName",
+									"value": "pepito grillo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z/update",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z/delete",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validate-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "yosyp.andriyash@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "yosyp_28",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "fullName",
+									"value": "yosyp andriyash",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "asd7f9s8d7f9sd87f",
+									"type": "text"
+								},
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+									"type": "text"
+								},
+								{
+									"key": "applicationId",
+									"value": "D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/validate",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "yosyp.test@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "yosyp_test",
+									"type": "text"
+								},
+								{
+									"key": "fullName",
+									"value": "yosyp andriyash",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "sdifposdip",
+									"type": "text"
+								},
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+									"type": "text"
+								},
+								{
+									"key": "applicationId",
+									"value": "D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/create-user",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"create-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "applications",
+			"item": [
+				{
+					"name": "create-application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "applicationName",
+									"value": "goofle",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://google.com",
+									"type": "text"
+								},
+								{
+									"key": "callbackUrl",
+									"value": "https://google.com/login/callback",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/applications/create-application",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								"create-application"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

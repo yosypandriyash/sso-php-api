@@ -34,15 +34,15 @@ $routes->set404Override();
  */
 
 
-$routes->post('/api/v1/(:alphanum)/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
+$routes->post('/api/v1/users/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
+$routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::index/$1');
 
-$routes->post('/api/v1/(:alphanum)/validate-user', 'Api\v1\User\UserValidationController::index/$1');
 //$routes->add('/api/v1/(:alphanum)/logout-user', 'Api\v1\User\UserRegistrationController::index/$1');
 //$routes->add('/api/v1/(:alphanum)/reset-password-user', 'Api\v1\User\UserRegistrationController::index/$1');
 
-$routes->post('/api/v1/create-application', 'Api\v1\Application\ApplicationRegistrationController::index');
+$routes->post('/api/v1/applications/create-application', 'Api\v1\Application\ApplicationRegistrationController::index');
 
 
 

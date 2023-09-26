@@ -17,17 +17,15 @@ use Core\Application\User\Validate\UserValidation\UserValidationService;
 class UserValidationController extends UserApiController {
 
     protected array $requestParameters = [
-        'applicationUniqueId' => AppUniqueIdConstraint::class,
+        'applicationId' => AppUniqueIdConstraint::class,
         'applicationApiKey' => ApplicationApiKeyConstraint::class,
         'email' => EmailConstraint::class,
         'password' => PasswordConstraint::class
     ];
 
-    public function index($appUniqueId): ResponseInterface
+    public function index(): ResponseInterface
     {
-        $bodyParams = $this->retrieveBodyRequestParameters(
-            ['applicationUniqueId' => $appUniqueId]
-        );
+        $bodyParams = $this->retrieveBodyRequestParameters();
 
         try {
             $validationResult = $this->validateFields($bodyParams, $this->requestParameters);
@@ -42,7 +40,7 @@ class UserValidationController extends UserApiController {
                 new MySqlApplicationUserRepository()
             ))->execute(
                 UserValidationRequest::create(
-                    $bodyParams['applicationUniqueId'],
+                    $bodyParams['applicationId'],
                     $bodyParams['applicationApiKey'],
                     $bodyParams['email'],
                     $bodyParams['password']

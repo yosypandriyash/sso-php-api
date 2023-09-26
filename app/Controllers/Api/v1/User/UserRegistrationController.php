@@ -20,7 +20,7 @@ use Core\Application\User\Create\UserRegistration\UserRegistrationService;
 class UserRegistrationController extends UserApiController {
 
     protected array $requestParameters = [
-        'applicationUniqueId' => AppUniqueIdConstraint::class,
+        'applicationId' => AppUniqueIdConstraint::class,
         'applicationApiKey' => ApplicationApiKeyConstraint::class,
         'email' => EmailConstraint::class,
         'username' => UserNameConstraint::class,
@@ -28,11 +28,9 @@ class UserRegistrationController extends UserApiController {
         'password' => PasswordConstraint::class
     ];
 
-    public function index($appUniqueId): ResponseInterface
+    public function index(): ResponseInterface
     {
-        $bodyParams = $this->retrieveBodyRequestParameters(
-            ['applicationUniqueId' => $appUniqueId]
-        );
+        $bodyParams = $this->retrieveBodyRequestParameters();
 
         try {
             $validationResult = $this->validateFields($bodyParams, $this->requestParameters);
@@ -48,7 +46,7 @@ class UserRegistrationController extends UserApiController {
                 new StringHelper(),
             ))->execute(
                 UserRegistrationRequest::create(
-                    $bodyParams['applicationUniqueId'],
+                    $bodyParams['applicationId'],
                     $bodyParams['applicationApiKey'],
                     $bodyParams['email'],
                     $bodyParams['username'],

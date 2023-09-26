@@ -12,7 +12,6 @@ abstract class DomainModel implements DomainModelInterface {
     protected ?PrimaryKey $id;
     protected ?DateTime $updatedAt = null;
     protected ?DateTime $deletedAt = null;
-    protected bool $isDeleted = false;
 
     public function getId(): ?PrimaryKey
     {
@@ -50,7 +49,7 @@ abstract class DomainModel implements DomainModelInterface {
 
     public function setUpdatedAt(?DateTime $dateTime = null): void
     {
-        $this->updatedAt = $dateTime !== null ? new DateTime() : $dateTime;
+        $this->updatedAt = $dateTime === null ? new DateTime() : $dateTime;
     }
 
     protected static function parsePrimaryKeyType(?string $idValue): ?PrimaryKey
