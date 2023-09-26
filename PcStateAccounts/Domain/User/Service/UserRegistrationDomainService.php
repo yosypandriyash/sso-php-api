@@ -59,9 +59,10 @@ class UserRegistrationDomainService extends BaseDomainService {
         }
 
         // Prevent duplicated user registration
-        $user = $this->userRepository->getOneByUserNameAndEmail($username, $email);
+        $userByEmail = $this->userRepository->getOneByEmail($username);
+        $userByUserName = $this->userRepository->getOneByUserName($username);
 
-        if ($user !== null) {
+        if ($userByEmail !== null || $userByUserName !== null) {
             throw new DuplicatedUserException();
         }
 

@@ -33,10 +33,9 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-$routes->add('/api/v1/(:alphanum)/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
-// $routes->add('/api/v1/(:alphanum)/update-user', 'Api\v1\User\UserRegistrationController::index/$1');
+
+$routes->post('/api/v1/(:alphanum)/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
+$routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
 // $routes->add('/api/v1/(:alphanum)/delete-user', 'Api\v1\User\UserRegistrationController::index/$1');
 
 $routes->post('/api/v1/(:alphanum)/validate-user', 'Api\v1\User\UserValidationController::index/$1');

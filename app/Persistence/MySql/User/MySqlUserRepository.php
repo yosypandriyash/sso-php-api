@@ -11,14 +11,30 @@ use Exception;
 
 class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
 {
+    /**
+     * @throws Exception
+     */
+    public function getOneByUniqueId(string $userUniqueId): ?User
+    {
+        $userModel = $this->getUserByUniqueId($userUniqueId);
+        return $userModel !== null ? MySqlModelToDomainEntityTransformer::execute(UsersModel::class, $userModel): null;
+    }
 
     /**
      * @throws CouldNotSaveUserException
      */
     public function saveEntity(User $user): User
     {
-        $userModel = new UsersModel();
-        $userModel->setUniqueId($user->getUniqueId());
+        if ($user->getId() === null) {
+            // Create
+            $userModel = new UsersModel();
+            $userModel->setUniqueId($user->getUniqueId());
+
+        } else {
+            // Update
+            $userModel = $this->getUserByUniqueId($user->getUniqueId());
+        }
+
         $userModel->setUsername($user->getUsername());
         $userModel->setFullName($user->getFullName());
         $userModel->setEmail($user->getEmail());
@@ -29,7 +45,9 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
                 throw new Exception();
             }
 
-            $user->setId($userModel->getLastInsertionId());
+            if ($user->getId() === null) {
+                $user->setId($userModel->getLastInsertionId());
+            }
 
         } catch (Exception $exception) {
             throw new CouldNotSaveUserException();
@@ -54,19 +72,28 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
         return $userModel !== null ? MySqlModelToDomainEntityTransformer::execute(UsersModel::class, $userModel): null;
     }
 
-    /**
-     * @param string $userName
-     * @param string $email
-     * @return User|null
-     * @throws Exception
-     */
-    public function getOneByUserNameAndEmail(string $userName,string $email): ?User
+    public function getOneByEmail( string $email): ?User
     {
         $userModel = $this->getFirst([
-            'userName' => $userName,
             'email' => $email
         ]);
 
         return $userModel !== null ? MySqlModelToDomainEntityTransformer::execute(UsersModel::class, $userModel): null;
+    }
+
+    public function getOneByUserName(string $userName): ?User
+    {
+        $userModel = $this->getFirst([
+            'userName' => $userName,
+        ]);
+
+        return $userModel !== null ? MySqlModelToDomainEntityTransformer::execute(UsersModel::class, $userModel): null;
+    }
+
+    private function getUserByUniqueId(string $uniqueId): ?UsersModel
+    {
+        return $this->getFirst([
+            'uniqueId' => $uniqueId,
+        ]);
     }
 }

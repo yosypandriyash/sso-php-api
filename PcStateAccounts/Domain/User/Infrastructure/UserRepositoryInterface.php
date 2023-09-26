@@ -6,7 +6,11 @@ use Core\Domain\User\User;
 
 interface UserRepositoryInterface {
 
-    public function getOneByUserNameAndEmail(string $userName,string $email): ?User;
+    public function getOneByUniqueId(string $userUniqueId): ?User;
+
+    public function getOneByEmail( string $email): ?User;
+
+    public function getOneByUserName(string $userName): ?User;
 
     public function getOneByEmailAndPassword(string $email, string $password): ?User;
 

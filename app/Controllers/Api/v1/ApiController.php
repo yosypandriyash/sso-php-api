@@ -23,11 +23,29 @@ abstract class ApiController extends BaseController {
         foreach ($requestFields as $requestFieldName => $requestFieldValue) {
             if (isset($validationInvokableClasses[$requestFieldName])) {
 
-                /** @var BaseConstraint $validationClass */
-                $validationClass = new $validationInvokableClasses[$requestFieldName];
+                if (!is_array($validationInvokableClasses[$requestFieldName])) {
+                    $validationInvokableClasses[$requestFieldName] = [$validationInvokableClasses[$requestFieldName]];
+                }
 
-                if (!$validationClass->validateField($requestFieldValue)) {
-                    $validationResult->add($validationClass->getExceptionMessage());
+                foreach ($validationInvokableClasses[$requestFieldName] as $validationConstraint) {
+
+                    if (
+                        is_null($requestFieldValue) &&
+                        in_array(null, $validationInvokableClasses[$requestFieldName])
+                    ) {
+                        continue 2;
+                    }
+
+                    if (is_null($validationConstraint)) {
+                        continue;
+                    }
+
+                    /** @var BaseConstraint $validationClass */
+                    $validationClass = new $validationConstraint;
+
+                    if (!$validationClass->validateField($requestFieldValue)) {
+                        $validationResult->add($validationClass->getExceptionMessage());
+                    }
                 }
             }
         }
