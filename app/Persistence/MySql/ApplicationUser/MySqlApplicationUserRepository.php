@@ -5,9 +5,9 @@ namespace App\Persistence\MySql\ApplicationUser;
 use App\Models\ApplicationsModel;
 use App\Models\ApplicationUsersModel;
 use App\Models\UsersModel;
+use App\Persistence\Exception\CouldNotSaveException;
 use App\Persistence\MySql\MySqlModelToDomainEntityTransformer;
 use Core\Domain\ApplicationUser\ApplicationUser;
-use Core\Domain\ApplicationUser\Exception\CouldNotSaveApplicationUserException;
 use Core\Domain\ApplicationUser\Infrastructure\ApplicationUserRepositoryInterface;
 use Exception;
 
@@ -71,7 +71,7 @@ class MySqlApplicationUserRepository extends ApplicationUsersModel implements Ap
     }
 
     /**
-     * @throws CouldNotSaveApplicationUserException
+     * @throws CouldNotSaveException
      */
     public function saveEntity(ApplicationUser $applicationUser): ApplicationUser
     {
@@ -88,7 +88,7 @@ class MySqlApplicationUserRepository extends ApplicationUsersModel implements Ap
             $applicationUser->setId($applicationUserModel->getLastInsertionId());
 
         } catch (Exception $exception) {
-            throw new CouldNotSaveApplicationUserException();
+            throw new CouldNotSaveException();
         }
 
         return $applicationUser;

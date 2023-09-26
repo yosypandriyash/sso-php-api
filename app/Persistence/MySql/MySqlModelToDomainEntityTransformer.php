@@ -10,8 +10,8 @@ use Core\Domain\Application\Application;
 use Core\Domain\ApplicationUser\ApplicationUser;
 use Core\Domain\User\User;
 
-final class MySqlModelToDomainEntityTransformer
-{
+final class MySqlModelToDomainEntityTransformer {
+
     private static array $translations = [
         UsersModel::class => 'fromUsersModel',
         ApplicationsModel::class => 'fromApplicationsModel',
@@ -33,7 +33,7 @@ final class MySqlModelToDomainEntityTransformer
 
     private static function fromUsersModel(UsersModel $userModel): User
     {
-        return User::create(
+        $user = User::create(
             $userModel->getId(),
             $userModel->getUniqueId(),
             $userModel->getUsername(),
@@ -41,11 +41,17 @@ final class MySqlModelToDomainEntityTransformer
             $userModel->getEmail(),
             $userModel->getPassword()
         );
+
+        if ($userModel->getDeletedAt() !== null) {
+            $user->setIsDeleted(true);
+        }
+
+        return $user;
     }
 
     private static function fromApplicationsModel(ApplicationsModel $applicationModel): Application
     {
-        return Application::create(
+        $application = Application::create(
             $applicationModel->getId(),
             $applicationModel->getUniqueId(),
             $applicationModel->getAppName(),
@@ -53,15 +59,27 @@ final class MySqlModelToDomainEntityTransformer
             $applicationModel->getCallbackUrl(),
             $applicationModel->getApiKey()
         );
+
+        if ($applicationModel->getDeletedAt() !== null) {
+            $application->setIsDeleted(true);
+        }
+
+        return $application;
     }
 
     private static function fromApplicationUsersModel(ApplicationUsersModel $applicationUserModel): ApplicationUser
     {
-        return ApplicationUser::create(
+        $applicationUser = ApplicationUser::create(
             $applicationUserModel->getId(),
             $applicationUserModel->getUniqueId(),
             $applicationUserModel->getApplicationId(),
             $applicationUserModel->getUserId()
         );
+
+        if ($applicationUserModel->getDeletedAt() !== null) {
+            $applicationUser->setIsDeleted(true);
+        }
+
+        return $applicationUser;
     }
 }

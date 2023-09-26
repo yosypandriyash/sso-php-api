@@ -6,6 +6,7 @@ use App\Constraint\EmailConstraint;
 use App\Constraint\FullNameConstraint;
 use App\Constraint\PasswordConstraint;
 use App\Constraint\UserNameConstraint;
+use App\Constraint\UserUniqueIdConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -15,6 +16,7 @@ use Core\Application\User\Update\UserUpdate\UserUpdateService;
 class UserUpdateController extends UserApiController {
 
     protected array $requestParameters = [
+        'userUniqueId' => UserUniqueIdConstraint::class,
         'email' => [null, EmailConstraint::class],
         'username' => [null, UserNameConstraint::class],
         'fullName' => [null, FullNameConstraint::class],

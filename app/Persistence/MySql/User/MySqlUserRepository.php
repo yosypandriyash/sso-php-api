@@ -3,8 +3,9 @@
 namespace App\Persistence\MySql\User;
 
 use App\Models\UsersModel;
+use App\Persistence\Exception\CouldNotSaveException;
+use App\Persistence\MySql\MySqlDefinitions;
 use App\Persistence\MySql\MySqlModelToDomainEntityTransformer;
-use Core\Domain\User\Exception\CouldNotSaveUserException;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
 use Core\Domain\User\User;
 use Exception;
@@ -21,7 +22,7 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
     }
 
     /**
-     * @throws CouldNotSaveUserException
+     * @throws CouldNotSaveException
      */
     public function saveEntity(User $user): User
     {
@@ -40,6 +41,14 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
         $userModel->setEmail($user->getEmail());
         $userModel->setPassword($user->getPassword());
 
+        if ($user->getUpdatedAt() !== null) {
+            $userModel->setUpdatedAt($user->getUpdatedAt()->format(MySqlDefinitions::DATE_FORMAT));
+        }
+
+        if ($user->isDeleted()) {
+            $userModel->setDeletedAt($user->getDeletedAt()->format(MySqlDefinitions::DATE_FORMAT));
+        }
+
         try {
             if (!$userModel->save()) {
                 throw new Exception();
@@ -50,7 +59,7 @@ class MySqlUserRepository extends UsersModel implements UserRepositoryInterface
             }
 
         } catch (Exception $exception) {
-            throw new CouldNotSaveUserException();
+            throw new CouldNotSaveException();
         }
 
         return $user;

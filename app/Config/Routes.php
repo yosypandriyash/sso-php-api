@@ -36,7 +36,7 @@ $routes->set404Override();
 
 $routes->post('/api/v1/(:alphanum)/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
-// $routes->add('/api/v1/(:alphanum)/delete-user', 'Api\v1\User\UserRegistrationController::index/$1');
+$routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
 
 $routes->post('/api/v1/(:alphanum)/validate-user', 'Api\v1\User\UserValidationController::index/$1');
 //$routes->add('/api/v1/(:alphanum)/logout-user', 'Api\v1\User\UserRegistrationController::index/$1');

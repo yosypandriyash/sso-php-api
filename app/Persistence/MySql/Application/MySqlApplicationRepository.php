@@ -3,9 +3,9 @@
 namespace App\Persistence\MySql\Application;
 
 use App\Models\ApplicationsModel;
+use App\Persistence\Exception\CouldNotSaveException;
 use App\Persistence\MySql\MySqlModelToDomainEntityTransformer;
 use Core\Domain\Application\Application;
-use Core\Domain\Application\Exception\CouldNotSaveApplicationException;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 
 class MySqlApplicationRepository extends ApplicationsModel implements ApplicationRepositoryInterface
@@ -51,7 +51,7 @@ class MySqlApplicationRepository extends ApplicationsModel implements Applicatio
     }
 
     /**
-     * @throws CouldNotSaveApplicationException
+     * @throws CouldNotSaveException
      */
     public function saveEntity(Application $application): Application
     {
@@ -70,7 +70,7 @@ class MySqlApplicationRepository extends ApplicationsModel implements Applicatio
             $application->setId($applicationModel->getLastInsertionId());
 
         } catch (\Exception $exception) {
-            throw new CouldNotSaveApplicationException();
+            throw new CouldNotSaveException();
         }
 
         return $application;

@@ -57,3 +57,5 @@ env
 .env
 
 spark
+
+auth.json

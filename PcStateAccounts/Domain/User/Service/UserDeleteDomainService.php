@@ -7,7 +7,7 @@ use Core\Domain\User\Exception\CouldNotSaveUserException;
 use Core\Domain\User\Exception\UserNotFoundException;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
 
-class UserUpdateDomainService extends BaseDomainService {
+class UserDeleteDomainService extends BaseDomainService {
 
     private UserRepositoryInterface $userRepository;
 
@@ -22,12 +22,8 @@ class UserUpdateDomainService extends BaseDomainService {
      * @throws CouldNotSaveUserException
      * @throws UserNotFoundException
      */
-    public function updateUser(
-        string $userUniqueId,
-        ?string $username,
-        ?string $fullName,
-        ?string $email,
-        ?string $password
+    public function deleteUser(
+        string $userUniqueId
     ): bool
     {
         $user = $this->userRepository->getOneByUniqueId($userUniqueId);
@@ -37,23 +33,8 @@ class UserUpdateDomainService extends BaseDomainService {
         }
 
         try {
-            if ($username !== null) {
-                $user->setUsername($username);
-            }
 
-            if ($fullName !== null) {
-                $user->setFullName($fullName);
-            }
-
-            if ($email !== null) {
-                $user->setEmail($email);
-            }
-
-            if ($password !== null) {
-                $user->setPassword($password);
-            }
-
-            $user->setUpdatedAt();
+            $user->setIsDeleted(true);
             $this->userRepository->saveEntity($user);
 
         } catch (\Exception $exception) {
