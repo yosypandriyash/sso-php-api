@@ -4,23 +4,23 @@ namespace App\Models\Base;
 
 
 
-class ApplicationsBaseModel extends BaseModel {
+class ApplicationUserPermissionsBaseModel extends BaseModel {
 
 
 
 	// Auto-generated file.
 	// Please don´t modify this file. 
 	// All changes will be erased in the next CLI models::generate command launch
-	// Use App\Models\ApplicationsModel.php file instead to add your custom model methods
+	// Use App\Models\ApplicationUserPermissionsModel.php file instead to add your custom model methods
 
 
-	protected $table = 'applications';
+	protected $table = 'application_user_permissions';
 	protected $primaryKey = 'id';
 
 	protected $returnType = 'array';
 	protected $useSoftDeletes = true;
 
-	protected $allowedFields = ['id', 'unique_id', 'app_name', 'url', 'callback_url', 'api_key', 'created_at', 'updated_at', 'deleted_at'];
+	protected $allowedFields = ['id', 'unique_id', 'user_id', 'application_permission_id', 'is_granted', 'created_at', 'updated_at', 'deleted_at'];
 
 	protected $useTimestamps = true;
 	protected $createdField = 'created_at';
@@ -31,10 +31,9 @@ class ApplicationsBaseModel extends BaseModel {
 
 	protected $id;
 	protected $uniqueId;
-	protected $appName;
-	protected $url;
-	protected $callbackUrl;
-	protected $apiKey;
+	protected $userId;
+	protected $applicationPermissionId;
+	protected $isGranted;
 	protected $createdAt;
 	protected $updatedAt;
 	protected $deletedAt;
@@ -43,10 +42,9 @@ class ApplicationsBaseModel extends BaseModel {
 	protected $mapper = [
 		'id' => 'id',
 		'uniqueId' => 'unique_id',
-		'appName' => 'app_name',
-		'url' => 'url',
-		'callbackUrl' => 'callback_url',
-		'apiKey' => 'api_key',
+		'userId' => 'user_id',
+		'applicationPermissionId' => 'application_permission_id',
+		'isGranted' => 'is_granted',
 		'createdAt' => 'created_at',
 		'updatedAt' => 'updated_at',
 		'deletedAt' => 'deleted_at',
@@ -59,6 +57,8 @@ class ApplicationsBaseModel extends BaseModel {
 
 
 	protected $tableForeignRelations = [
+		'userId' => 'UsersModel.id',
+		'applicationPermissionId' => 'ApplicationPermissionsModel.id',
 	];
 
 	public function getTableForeignRelations($key = null)
@@ -84,36 +84,28 @@ class ApplicationsBaseModel extends BaseModel {
 			'default' => '',
 			'extra' => ''
 		],
-		'appName' => [
-			'name' => "appName",
-			'type' => "varchar(64)",
+		'userId' => [
+			'name' => "userId",
+			'type' => "int(11)",
 			'is_null' => false,
-			'key' => '',
+			'key' => 'MUL',
 			'default' => '',
 			'extra' => ''
 		],
-		'url' => [
-			'name' => "url",
-			'type' => "varchar(96)",
+		'applicationPermissionId' => [
+			'name' => "applicationPermissionId",
+			'type' => "int(11)",
 			'is_null' => false,
-			'key' => '',
+			'key' => 'MUL',
 			'default' => '',
 			'extra' => ''
 		],
-		'callbackUrl' => [
-			'name' => "callbackUrl",
-			'type' => "varchar(128)",
+		'isGranted' => [
+			'name' => "isGranted",
+			'type' => "tinyint(1)",
 			'is_null' => false,
 			'key' => '',
-			'default' => '',
-			'extra' => ''
-		],
-		'apiKey' => [
-			'name' => "apiKey",
-			'type' => "varchar(96)",
-			'is_null' => false,
-			'key' => 'UNI',
-			'default' => '',
+			'default' => '1',
 			'extra' => ''
 		],
 		'createdAt' => [
@@ -159,24 +151,19 @@ class ApplicationsBaseModel extends BaseModel {
 		return $this->uniqueId;
 	}
 
-	public function getAppName()
+	public function getUserId()
 	{
-		return $this->appName;
+		return $this->userId;
 	}
 
-	public function getUrl()
+	public function getApplicationPermissionId()
 	{
-		return $this->url;
+		return $this->applicationPermissionId;
 	}
 
-	public function getCallbackUrl()
+	public function getIsGranted()
 	{
-		return $this->callbackUrl;
-	}
-
-	public function getApiKey()
-	{
-		return $this->apiKey;
+		return $this->isGranted;
 	}
 
 	public function getCreatedAt()
@@ -207,27 +194,21 @@ class ApplicationsBaseModel extends BaseModel {
 		return $this;
 	}
 
-	public function setAppName($appName)
+	public function setUserId($userId)
 	{
-		$this->appName = $appName;
+		$this->userId = $userId;
 		return $this;
 	}
 
-	public function setUrl($url)
+	public function setApplicationPermissionId($applicationPermissionId)
 	{
-		$this->url = $url;
+		$this->applicationPermissionId = $applicationPermissionId;
 		return $this;
 	}
 
-	public function setCallbackUrl($callbackUrl)
+	public function setIsGranted($isGranted)
 	{
-		$this->callbackUrl = $callbackUrl;
-		return $this;
-	}
-
-	public function setApiKey($apiKey)
-	{
-		$this->apiKey = $apiKey;
+		$this->isGranted = $isGranted;
 		return $this;
 	}
 

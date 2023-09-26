@@ -210,40 +210,4 @@ class ApplicationUsersBaseModel extends BaseModel {
 	}
 
 
-	public function validateId($id = null)
-	{
-		return $this->validateField($this->validationRules['id'], $id);
-	}
-
-	public function validateUniqueId($uniqueId = null)
-	{
-		return $this->validateField($this->validationRules['uniqueId'], $uniqueId);
-	}
-
-	public function validateApplicationId($applicationId = null)
-	{
-		return $this->validateField($this->validationRules['applicationId'], $applicationId);
-	}
-
-	public function validateUserId($userId = null)
-	{
-		return $this->validateField($this->validationRules['userId'], $userId);
-	}
-
-	public function validateCreatedAt($createdAt = null)
-	{
-		return $this->validateField($this->validationRules['createdAt'], $createdAt);
-	}
-
-	public function validateUpdatedAt($updatedAt = null)
-	{
-		return $this->validateField($this->validationRules['updatedAt'], $updatedAt);
-	}
-
-	public function validateDeletedAt($deletedAt = null)
-	{
-		return $this->validateField($this->validationRules['deletedAt'], $deletedAt);
-	}
-
-
 }
