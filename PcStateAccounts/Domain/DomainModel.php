@@ -8,8 +8,11 @@ use DateTime;
 
 abstract class DomainModel implements DomainModelInterface {
 
+    public const UNIQUE_ID_LENGTH = 96;
     protected static string $primaryKeyType = Types::TYPE_INT;
     protected ?PrimaryKey $id;
+
+    protected \DateTime $createdAt;
     protected ?DateTime $updatedAt = null;
     protected ?DateTime $deletedAt = null;
 
@@ -21,6 +24,16 @@ abstract class DomainModel implements DomainModelInterface {
     public function setId(string $id): void
     {
         $this->id = self::parsePrimaryKeyType($id);
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 
     public function isDeleted(): bool

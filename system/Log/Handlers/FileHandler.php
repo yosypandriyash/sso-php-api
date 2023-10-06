@@ -34,7 +34,7 @@ class FileHandler extends BaseHandler
     protected $fileExtension;
 
     /**
-     * Permissions for new log files
+     * ApplicationPermissions for new log files
      *
      * @var int
      */

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Constraint;
+namespace App\Constraint\Application;
+
+use App\Constraint\BaseConstraint;
 
 class ApplicationApiKeyConstraint extends BaseConstraint {
 

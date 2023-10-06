@@ -44,7 +44,7 @@ $routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::i
 
 $routes->post('/api/v1/applications/create-application', 'Api\v1\Application\ApplicationRegistrationController::index');
 
-
+$routes->post('/api/v1/applications/(:alphanum)/add-permission', 'Api\v1\ApplicationPermissions\ApplicationPermissionRegistrationController::index/$1');
 
 /*
  * --------------------------------------------------------------------

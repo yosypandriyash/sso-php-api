@@ -7,16 +7,12 @@ use Core\Domain\ValueObjects\PrimaryKey;
 use DateTime;
 
 class Application extends DomainModel {
-
-    public const UNIQUE_ID_LENGTH = 96;
     public const API_KEY_LENGTH = 96;
-
     private string $uniqueId;
     private string $applicationName;
     private string $url;
     private string $callbackUrl;
     private string $apiKey;
-    private \DateTime $createdAt;
 
     private function __construct(
         ?PrimaryKey $id,
@@ -100,16 +96,6 @@ class Application extends DomainModel {
     public function setApiKey(string $apiKey): void
     {
         $this->apiKey = $apiKey;
-    }
-
-    public function getCreatedAt(): string
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
     }
 
     public function toArray(): array

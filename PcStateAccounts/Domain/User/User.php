@@ -7,14 +7,11 @@ use Core\Domain\ValueObjects\PrimaryKey;
 
 class User extends DomainModel {
 
-    public const UNIQUE_ID_LENGTH = 96;
-
     private string $uniqueId;
     private string $username;
     private string $fullName;
     private string $email;
     private string $password;
-    private \DateTime $createdAt;
 
     public function __construct(
         ?PrimaryKey $id,
@@ -98,16 +95,6 @@ class User extends DomainModel {
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }
-
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
     }
 
     public function toArray(): array

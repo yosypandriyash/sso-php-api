@@ -62,7 +62,7 @@ create table application_permissions (
     foreign key(application_id) references applications(id) on delete cascade on update cascade
 );
 
-create table application_user_permissions (
+create table user_application_permissions (
      id int auto_increment not null,
      unique_id varchar(96) unique not null,
      user_id int not null,

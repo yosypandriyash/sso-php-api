@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Api\v1\User;
 
-use App\Constraint\UserUniqueIdConstraint;
+use App\Constraint\User\UserUniqueIdConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;

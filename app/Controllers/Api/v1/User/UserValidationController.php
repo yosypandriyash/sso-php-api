@@ -2,10 +2,10 @@
 
 namespace App\Controllers\Api\v1\User;
 
-use App\Constraint\ApplicationApiKeyConstraint;
-use App\Constraint\AppUniqueIdConstraint;
-use App\Constraint\EmailConstraint;
-use App\Constraint\PasswordConstraint;
+use App\Constraint\Application\AppUniqueIdConstraint;
+use App\Constraint\Application\ApplicationApiKeyConstraint;
+use App\Constraint\User\EmailConstraint;
+use App\Constraint\User\PasswordConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Persistence\MySql\Application\MySqlApplicationRepository;
 use App\Persistence\MySql\ApplicationUser\MySqlApplicationUserRepository;

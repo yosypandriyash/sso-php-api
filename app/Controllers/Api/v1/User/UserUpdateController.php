@@ -2,11 +2,11 @@
 
 namespace App\Controllers\Api\v1\User;
 
-use App\Constraint\EmailConstraint;
-use App\Constraint\FullNameConstraint;
-use App\Constraint\PasswordConstraint;
-use App\Constraint\UserNameConstraint;
-use App\Constraint\UserUniqueIdConstraint;
+use App\Constraint\User\EmailConstraint;
+use App\Constraint\User\FullNameConstraint;
+use App\Constraint\User\PasswordConstraint;
+use App\Constraint\User\UserNameConstraint;
+use App\Constraint\User\UserUniqueIdConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;

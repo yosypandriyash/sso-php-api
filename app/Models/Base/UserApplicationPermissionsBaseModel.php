@@ -4,17 +4,17 @@ namespace App\Models\Base;
 
 
 
-class ApplicationUserPermissionsBaseModel extends BaseModel {
+class UserApplicationPermissionsBaseModel extends BaseModel {
 
 
 
 	// Auto-generated file.
 	// Please don´t modify this file. 
 	// All changes will be erased in the next CLI models::generate command launch
-	// Use App\Models\ApplicationUserPermissionsModel.php file instead to add your custom model methods
+	// Use App\Models\UserApplicationPermissionsModel.php file instead to add your custom model methods
 
 
-	protected $table = 'application_user_permissions';
+	protected $table = 'user_application_permissions';
 	protected $primaryKey = 'id';
 
 	protected $returnType = 'array';

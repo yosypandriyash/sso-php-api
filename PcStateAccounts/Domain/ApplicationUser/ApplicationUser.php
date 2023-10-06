@@ -9,13 +9,11 @@ use Core\Domain\ValueObjects\PrimaryKey;
 
 class ApplicationUser extends DomainModel {
 
-    public const UNIQUE_ID_LENGTH = 96;
     public const MAXIMUM_ALLOWED_DUPLICATED_APPLICATION_USERS = 0;
 
     private string $uniqueId;
     private Application $application;
     private User $user;
-    private \DateTime $createdAt;
 
     private function __construct(
         ?PrimaryKey $id,
@@ -74,22 +72,12 @@ class ApplicationUser extends DomainModel {
         $this->user = $user;
     }
 
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
     public function toArray(): array
     {
         return [
             'uniqueId' => $this->uniqueId,
-            'application' => $this->application,
-            'user' => $this->user,
+            'application' => $this->application->toArray(),
+            'user' => $this->user->toArray(),
         ];
     }
 }

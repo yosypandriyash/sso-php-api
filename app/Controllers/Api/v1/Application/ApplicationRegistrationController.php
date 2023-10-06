@@ -2,8 +2,8 @@
 
 namespace App\Controllers\Api\v1\Application;
 
-use App\Constraint\ApplicationNameConstraint;
-use App\Constraint\UrlConstraint;
+use App\Constraint\Application\ApplicationNameConstraint;
+use App\Constraint\Application\UrlConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Helpers\StringHelper;
 use App\Persistence\MySql\Application\MySqlApplicationRepository;

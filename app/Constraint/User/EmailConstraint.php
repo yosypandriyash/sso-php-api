@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Constraint;
+namespace App\Constraint\User;
+
+use App\Constraint\BaseConstraint;
 
 class EmailConstraint extends BaseConstraint {
 
