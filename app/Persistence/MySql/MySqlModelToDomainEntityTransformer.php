@@ -6,11 +6,13 @@ use App\Models\ApplicationPermissionsModel;
 use App\Models\ApplicationsModel;
 use App\Models\ApplicationUsersModel;
 use App\Models\Base\BaseModel;
+use App\Models\UserApplicationPermissionsModel;
 use App\Models\UsersModel;
 use Core\Domain\Application\Application;
 use Core\Domain\ApplicationPermission\ApplicationPermission;
 use Core\Domain\ApplicationUser\ApplicationUser;
 use Core\Domain\User\User;
+use Core\Domain\UserPermission\UserPermission;
 
 final class MySqlModelToDomainEntityTransformer {
 
@@ -18,7 +20,8 @@ final class MySqlModelToDomainEntityTransformer {
         UsersModel::class => 'fromUsersModel',
         ApplicationsModel::class => 'fromApplicationsModel',
         ApplicationUsersModel::class => 'fromApplicationUsersModel',
-        ApplicationPermissionsModel::class => 'fromApplicationPermissionsModel'
+        ApplicationPermissionsModel::class => 'fromApplicationPermissionsModel',
+        UserApplicationPermissionsModel::class => 'fromUserApplicationPermissionsModel'
     ];
 
     /**
@@ -106,5 +109,30 @@ final class MySqlModelToDomainEntityTransformer {
         }
 
         return $applicationPermission;
+    }
+
+    private static function fromUserApplicationPermissionsModel(UserApplicationPermissionsModel $userApplicationPermissionsModel): UserPermission
+    {
+        $userPermission = UserPermission::create(
+            $userApplicationPermissionsModel->getId(),
+            $userApplicationPermissionsModel->getUniqueId(),
+            self::fromUsersModel(
+                (new UsersModel())->getOneById(
+                    $userApplicationPermissionsModel->getUserId()
+                )
+            ),
+            self::fromApplicationPermissionsModel(
+                (new ApplicationPermissionsModel())->getOneById(
+                    $userApplicationPermissionsModel->getOneByUserIdApplicationPermissionId()
+                )
+            ),
+            $userApplicationPermissionsModel->getIsGranted()
+        );
+
+        if ($userApplicationPermissionsModel->getDeletedAt() !== null) {
+            $userPermission->setIsDeleted(true);
+        }
+
+        return $userPermission;
     }
 }

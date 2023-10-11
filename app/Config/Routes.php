@@ -37,9 +37,11 @@ $routes->set404Override();
 $routes->post('/api/v1/users/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
-$routes->post('/api/v1/users/(:alphanum)/grant-permission/(:alphanum)', 'Api\v1\User\UserAddPermissionController::index/$1/$2');
-$routes->post('/api/v1/users/(:alphanum)/revoke-permission/(:alphanum)', 'Api\v1\User\UserRemovePermissionController::index/$1/$2');
 $routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::index/$1');
+
+$routes->post('/api/v1/users/(:alphanum)/grant-permission/(:alphanum)', 'Api\v1\UserPermission\GrantPermissionToUserController::index/$1/$2');
+$routes->post('/api/v1/users/(:alphanum)/revoke-permission/(:alphanum)', 'Api\v1\UserPermission\RevokePermissionFromUserController::index/$1/$2');
+
 
 //$routes->add('/api/v1/(:alphanum)/logout-user', 'Api\v1\User\UserRegistrationController::index/$1');
 //$routes->add('/api/v1/(:alphanum)/reset-password-user', 'Api\v1\User\UserRegistrationController::index/$1');
