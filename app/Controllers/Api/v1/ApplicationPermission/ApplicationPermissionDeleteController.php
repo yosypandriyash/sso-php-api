@@ -1,36 +1,34 @@
 <?php
 
-namespace App\Controllers\Api\v1\User;
+namespace App\Controllers\Api\v1\ApplicationPermission;
 
 use App\Constraint\Application\ApplicationApiKeyConstraint;
 use App\Constraint\Application\AppUniqueIdConstraint;
-use App\Constraint\User\EmailConstraint;
-use App\Constraint\User\FullNameConstraint;
-use App\Constraint\User\PasswordConstraint;
-use App\Constraint\User\UserNameConstraint;
+use App\Constraint\Permission\PermissionUniqueIdConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
-use App\Helpers\StringHelper;
 use App\Persistence\MySql\Application\MySqlApplicationRepository;
-use App\Persistence\MySql\ApplicationUser\MySqlApplicationUserRepository;
-use App\Persistence\MySql\User\MySqlUserRepository;
+use App\Persistence\MySql\ApplicationPermission\MySqlApplicationPermissionRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\User\Create\UserRegistrationRequest;
-use Core\Application\User\Create\UserRegistrationService;
+use Core\Application\ApplicationPermission\Delete\ApplicationPermissionDeleteRequest;
+use Core\Application\ApplicationPermission\Delete\ApplicationPermissionDeleteService;
 
-class UserRegistrationController extends UserApiController {
+class ApplicationPermissionDeleteController extends ApplicationPermissionApiController {
 
     protected array $requestParameters = [
-        'applicationId' => AppUniqueIdConstraint::class,
+        'applicationUniqueId' => AppUniqueIdConstraint::class,
         'applicationApiKey' => ApplicationApiKeyConstraint::class,
-        'email' => EmailConstraint::class,
-        'username' => UserNameConstraint::class,
-        'fullName' => FullNameConstraint::class,
-        'password' => PasswordConstraint::class
+        'permissionUniqueId' => PermissionUniqueIdConstraint::class,
     ];
 
-    public function index(): ResponseInterface
+    public function index(
+        string $applicationUniqueId,
+        string $permissionUniqueId
+    ): ResponseInterface
     {
-        $bodyParams = $this->retrieveBodyRequestParameters();
+        $bodyParams = $this->retrieveBodyRequestParameters([
+            'applicationUniqueId' => $applicationUniqueId,
+            'permissionUniqueId' => $permissionUniqueId
+        ]);
 
         try {
             $validationResult = $this->validateFields($bodyParams, $this->requestParameters);
@@ -39,19 +37,14 @@ class UserRegistrationController extends UserApiController {
                 return $this->constraintViolationResponse($validationResult);
             }
 
-            $applicationServiceResponse = (new UserRegistrationService(
-                new MySqlUserRepository(),
+            $applicationServiceResponse = (new ApplicationPermissionDeleteService(
                 new MySqlApplicationRepository(),
-                new MySqlApplicationUserRepository(),
-                new StringHelper(),
+                new MySqlApplicationPermissionRepository(),
             ))->execute(
-                UserRegistrationRequest::create(
-                    $bodyParams['applicationId'],
+                ApplicationPermissionDeleteRequest::create(
+                    $bodyParams['applicationUniqueId'],
                     $bodyParams['applicationApiKey'],
-                    $bodyParams['email'],
-                    $bodyParams['username'],
-                    $bodyParams['fullName'],
-                    $bodyParams['password']
+                    $bodyParams['permissionUniqueId'],
                 )
             );
 
@@ -68,7 +61,7 @@ class UserRegistrationController extends UserApiController {
 
         $apiResponse = new XhrResponse();
         $apiResponse->setOperationStatus(
-            $success ? 'USER_REGISTERED_SUCCESSFULLY' : 'ERROR',
+            $success ? 'PERMISSION_DELETED_SUCCESSFULLY' : 'ERROR',
             $result
         );
 

@@ -10,7 +10,7 @@ interface ApplicationUserRepositoryInterface {
 
     public function getAllByUserUniqueFields(string $userEmail, string $userName, string $applicationUniqueId): array;
 
-    public function getApplicationUserCount(int $applicationId, int $userId): int;
+    public function getApplicationUserCount(string $applicationUniqueId, string $userUniqueId): int;
 
     public function saveEntity(ApplicationUser $applicationUser): ApplicationUser;
 

@@ -24,7 +24,7 @@ class ApplicationUsersModel extends ApplicationUsersBaseModel {
         return (int) $items['result'];
     }
 
-    public function getApplicationUserCount(int $applicationId, int $userId): int
+    public function getApplicationUserCount(string $applicationUniqueId, string $userUniqueId): int
     {
         $items = $this->query(
             '
@@ -32,7 +32,9 @@ class ApplicationUsersModel extends ApplicationUsersBaseModel {
                    count(id) as result
                 FROM application_users
                 WHERE
-                    application_id = ' . $applicationId .  ' AND user_id = ' . $userId
+                    application_id = (select id from applications where unique_id = "' . $applicationUniqueId . '" )  
+                AND 
+                    user_id = (select id from users where unique_id = "' . $userUniqueId . '")'
             ,false);
 
         $items = reset($items);

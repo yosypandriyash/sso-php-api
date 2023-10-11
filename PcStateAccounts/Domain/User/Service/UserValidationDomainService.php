@@ -14,27 +14,19 @@ class UserValidationDomainService extends BaseDomainService {
 
     private UserRepositoryInterface $userRepository;
     private ApplicationRepositoryInterface $applicationRepository;
-    private ApplicationUserRepositoryInterface $applicationUserRepository;
 
     public function __construct(
         UserRepositoryInterface $userRepository,
-        ApplicationRepositoryInterface $applicationRepository,
-        ApplicationUserRepositoryInterface $applicationUserRepository
+        ApplicationRepositoryInterface $applicationRepository
     )
     {
         $this->userRepository = $userRepository;
         $this->applicationRepository = $applicationRepository;
-        $this->applicationUserRepository = $applicationUserRepository;
     }
 
     /**
-     * @param string $applicationUniqueId
-     * @param string $email
-     * @param string $password
-     * @return void
      * @throws ApplicationNotFoundException
      * @throws InvalidUserCredentialsException
-     * @throws UserNotBelongToApplicationException
      */
     public function validateUser(
         string $applicationUniqueId,
@@ -54,15 +46,6 @@ class UserValidationDomainService extends BaseDomainService {
 
         if (!$user) {
             throw new InvalidUserCredentialsException();
-        }
-
-        $matchesCount = $this->applicationUserRepository->getApplicationUserCount(
-            $application->getId()->getValue(),
-            $user->getId()->getValue()
-        );
-
-        if ($matchesCount === 0) {
-            throw new UserNotBelongToApplicationException();
         }
 
         // todo/update: Log user-validation request

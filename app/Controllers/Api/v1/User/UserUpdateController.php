@@ -10,8 +10,8 @@ use App\Constraint\User\UserUniqueIdConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\User\Update\UserUpdate\UserUpdateRequest;
-use Core\Application\User\Update\UserUpdate\UserUpdateService;
+use Core\Application\User\Update\UserUpdateRequest;
+use Core\Application\User\Update\UserUpdateService;
 
 class UserUpdateController extends UserApiController {
 

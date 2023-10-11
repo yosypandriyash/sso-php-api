@@ -2,6 +2,6 @@
 
 namespace Core\Domain;
 
-abstract class BaseDomainService implements DomainService {
+abstract class BaseDomainService implements DomainServiceInterface {
 
 }

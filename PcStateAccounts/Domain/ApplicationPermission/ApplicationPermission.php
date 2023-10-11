@@ -22,6 +22,7 @@ class ApplicationPermission extends DomainModel {
         ?string $permissionDescription,
         bool $isActive
     ) {
+        $this->id = $id;
         $this->uniqueId = $uniqueId;
         $this->permissionName = $permissionName;
         $this->permissionDescription = $permissionDescription;

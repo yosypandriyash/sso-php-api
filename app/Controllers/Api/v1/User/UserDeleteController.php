@@ -6,8 +6,8 @@ use App\Constraint\User\UserUniqueIdConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\User\Update\UserDelete\UserDeleteRequest;
-use Core\Application\User\Update\UserDelete\UserDeleteService;
+use Core\Application\User\Delete\UserDeleteRequest;
+use Core\Application\User\Delete\UserDeleteService;
 
 class UserDeleteController extends UserApiController {
 

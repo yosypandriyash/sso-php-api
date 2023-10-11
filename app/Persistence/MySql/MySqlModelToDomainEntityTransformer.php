@@ -2,11 +2,13 @@
 
 namespace App\Persistence\MySql;
 
+use App\Models\ApplicationPermissionsModel;
 use App\Models\ApplicationsModel;
 use App\Models\ApplicationUsersModel;
 use App\Models\Base\BaseModel;
 use App\Models\UsersModel;
 use Core\Domain\Application\Application;
+use Core\Domain\ApplicationPermission\ApplicationPermission;
 use Core\Domain\ApplicationUser\ApplicationUser;
 use Core\Domain\User\User;
 
@@ -15,7 +17,8 @@ final class MySqlModelToDomainEntityTransformer {
     private static array $translations = [
         UsersModel::class => 'fromUsersModel',
         ApplicationsModel::class => 'fromApplicationsModel',
-        ApplicationUsersModel::class => 'fromApplicationUsersModel'
+        ApplicationUsersModel::class => 'fromApplicationUsersModel',
+        ApplicationPermissionsModel::class => 'fromApplicationPermissionsModel'
     ];
 
     /**
@@ -81,5 +84,27 @@ final class MySqlModelToDomainEntityTransformer {
         }
 
         return $applicationUser;
+    }
+
+    private static function fromApplicationPermissionsModel(ApplicationPermissionsModel $applicationPermissionsModel): ApplicationPermission
+    {
+        $applicationPermission = ApplicationPermission::create(
+            $applicationPermissionsModel->getId(),
+            $applicationPermissionsModel->getUniqueId(),
+            self::fromApplicationsModel(
+                (new ApplicationsModel())->getOneById(
+                    $applicationPermissionsModel->getApplicationId()
+                )
+            ),
+            $applicationPermissionsModel->getPermissionName(),
+            $applicationPermissionsModel->getPermissionDescription(),
+            $applicationPermissionsModel->getIsActive()
+        );
+
+        if ($applicationPermissionsModel->getDeletedAt() !== null) {
+            $applicationPermission->setIsDeleted(true);
+        }
+
+        return $applicationPermission;
     }
 }

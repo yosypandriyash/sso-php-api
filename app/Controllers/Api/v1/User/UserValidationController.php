@@ -2,8 +2,8 @@
 
 namespace App\Controllers\Api\v1\User;
 
-use App\Constraint\Application\AppUniqueIdConstraint;
 use App\Constraint\Application\ApplicationApiKeyConstraint;
+use App\Constraint\Application\AppUniqueIdConstraint;
 use App\Constraint\User\EmailConstraint;
 use App\Constraint\User\PasswordConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
@@ -11,8 +11,8 @@ use App\Persistence\MySql\Application\MySqlApplicationRepository;
 use App\Persistence\MySql\ApplicationUser\MySqlApplicationUserRepository;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\User\Validate\UserValidation\UserValidationRequest;
-use Core\Application\User\Validate\UserValidation\UserValidationService;
+use Core\Application\User\Validate\UserValidationRequest;
+use Core\Application\User\Validate\UserValidationService;
 
 class UserValidationController extends UserApiController {
 

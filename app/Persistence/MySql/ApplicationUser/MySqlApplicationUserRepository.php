@@ -18,9 +18,9 @@ class MySqlApplicationUserRepository extends ApplicationUsersModel implements Ap
         return parent::getApplicationUsersCountFilteredByAppIdEmail($applicationUniqueId, $userEmail);
     }
 
-    public function getApplicationUserCount(int $applicationId, int $userId): int
+    public function getApplicationUserCount(string $applicationUniqueId, string $userUniqueId): int
     {
-        return parent::getApplicationUserCount($applicationId, $userId);
+        return parent::getApplicationUserCount($applicationUniqueId, $userUniqueId);
     }
 
     /**

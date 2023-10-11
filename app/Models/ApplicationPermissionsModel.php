@@ -8,7 +8,7 @@ use App\Models\Base\ApplicationPermissionsBaseModel;
 
 class ApplicationPermissionsModel extends ApplicationPermissionsBaseModel {
 
-    public function getCountMatchesByApplicationIdAndPermissionName(string $applicationId, string $permissionName): int
+    public function getCountMatchesByApplicationIdAndPermissionName(int $applicationId, string $permissionName): int
     {
         $items = $this->query(
             '
@@ -21,5 +21,13 @@ class ApplicationPermissionsModel extends ApplicationPermissionsBaseModel {
 
         $items = reset($items);
         return (int) $items['result'];
+    }
+
+    public function getApplicationPermissionByUniqueId(string $uniqueId): ?ApplicationPermissionsModel
+    {
+        return $this->getFirst([
+            'deletedAt' => null,
+            'uniqueId' => $uniqueId,
+        ]);
     }
 }

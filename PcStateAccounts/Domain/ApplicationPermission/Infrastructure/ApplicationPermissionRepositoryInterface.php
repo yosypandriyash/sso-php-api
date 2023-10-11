@@ -7,10 +7,13 @@ use Core\Domain\ApplicationPermission\ApplicationPermission;
 
 interface ApplicationPermissionRepositoryInterface {
 
+    public function getOneByUniqueId(string $permissionUniqueId): ?ApplicationPermission;
+
     public function saveEntity(ApplicationPermission $applicationPermission): ApplicationPermission;
 
     public function getCountMatchesByApplicationIdAndPermissionName(
-        string $applicationId,
+        int $applicationId,
         string $permissionName
     ): int;
+
 }

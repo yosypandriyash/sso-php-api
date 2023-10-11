@@ -8,8 +8,8 @@ use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Helpers\StringHelper;
 use App\Persistence\MySql\Application\MySqlApplicationRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\Application\Create\ApplicationRegistration\ApplicationRegistrationRequest;
-use Core\Application\Application\Create\ApplicationRegistration\ApplicationRegistrationService;
+use Core\Application\Application\Create\ApplicationRegistrationRequest;
+use Core\Application\Application\Create\ApplicationRegistrationService;
 
 class ApplicationRegistrationController extends ApplicationApiController {
 
