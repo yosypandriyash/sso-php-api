@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4f98e718-30b3-42f9-9111-2b8fe4ef9d07",
+		"_postman_id": "cb45eabb-aea7-4c35-9bcc-03591306c914",
 		"name": "pcstate-accounts.web.local",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29692606"
+		"_exporter_id": "5478324"
 	},
 	"item": [
 		{
@@ -228,6 +228,187 @@
 								"v1",
 								"applications",
 								"create-application"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "permissions",
+			"item": [
+				{
+					"name": "register-permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+									"type": "text"
+								},
+								{
+									"key": "permissionName",
+									"value": "user_general_access",
+									"type": "text"
+								},
+								{
+									"key": "permissionDescription",
+									"value": "Permiso general para acceder a la aplicacion",
+									"type": "text"
+								},
+								{
+									"key": "isActive",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/add-permission",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+								"add-permission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/remove-permission/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"applications",
+								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+								"remove-permission",
+								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny"
+							],
+							"query": [
+								{
+									"key": "applicationApiKey",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-permissions",
+			"item": [
+				{
+					"name": "user-grant-permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "applicationUniqueId",
+									"value": "D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+									"type": "text"
+								},
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/grant-permission/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
+								"grant-permission",
+								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-revoke-permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "applicationUniqueId",
+									"value": "D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+									"type": "text"
+								},
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/revoke-permission/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
+								"revoke-permission",
+								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny"
 							]
 						}
 					},

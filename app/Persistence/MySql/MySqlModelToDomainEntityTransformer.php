@@ -123,7 +123,7 @@ final class MySqlModelToDomainEntityTransformer {
             ),
             self::fromApplicationPermissionsModel(
                 (new ApplicationPermissionsModel())->getOneById(
-                    $userApplicationPermissionsModel->getOneByUserIdApplicationPermissionId()
+                    $userApplicationPermissionsModel->getApplicationPermissionId()
                 )
             ),
             $userApplicationPermissionsModel->getIsGranted()
