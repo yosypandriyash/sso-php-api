@@ -34,23 +34,22 @@ $routes->set404Override();
  */
 
 
-$routes->post('/api/v1/users/create-user', 'Api\v1\User\UserRegistrationController::index/$1');
+$routes->post('/api/v1/users/create', 'Api\v1\User\UserRegistrationController::index/$1');
+$routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
-$routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::index/$1');
 
-$routes->post('/api/v1/users/(:alphanum)/grant-permission/(:alphanum)', 'Api\v1\UserPermission\GrantPermissionToUserController::index/$1/$2');
-$routes->post('/api/v1/users/(:alphanum)/revoke-permission/(:alphanum)', 'Api\v1\UserPermission\RevokePermissionFromUserController::index/$1/$2');
-
+$routes->get('/api/v1/users/(:alphanum)/permissions/list', 'Api\v1\UserPermission\ListPermissionGrantedToUserController::index/$1');
+$routes->post('/api/v1/users/(:alphanum)/permissions/grant/(:alphanum)', 'Api\v1\UserPermission\GrantPermissionToUserController::index/$1/$2');
+$routes->post('/api/v1/users/(:alphanum)/permissions/revoke/(:alphanum)', 'Api\v1\UserPermission\RevokePermissionFromUserController::index/$1/$2');
 
 //$routes->add('/api/v1/(:alphanum)/logout-user', 'Api\v1\User\UserRegistrationController::index/$1');
 //$routes->add('/api/v1/(:alphanum)/reset-password-user', 'Api\v1\User\UserRegistrationController::index/$1');
 
-$routes->post('/api/v1/applications/create-application', 'Api\v1\Application\ApplicationRegistrationController::index');
+$routes->post('/api/v1/applications/create', 'Api\v1\Application\ApplicationRegistrationController::index');
 
-$routes->post('/api/v1/applications/(:alphanum)/add-permission', 'Api\v1\ApplicationPermission\ApplicationPermissionRegistrationController::index/$1');
-$routes->post('/api/v1/applications/(:alphanum)/remove-permission/(:alphanum)', 'Api\v1\ApplicationPermission\ApplicationPermissionDeleteController::index/$1/$2');
-
+$routes->post('/api/v1/applications/(:alphanum)/permissions/create', 'Api\v1\ApplicationPermission\ApplicationPermissionRegistrationController::index/$1');
+$routes->post('/api/v1/applications/(:alphanum)/permissions/delete/(:alphanum)', 'Api\v1\ApplicationPermission\ApplicationPermissionDeleteController::index/$1/$2');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

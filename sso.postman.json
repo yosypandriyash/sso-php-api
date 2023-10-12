@@ -216,7 +216,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/applications/create-application",
+							"raw": "http://pcstate-accounts.web.local/api/v1/applications/create",
 							"protocol": "http",
 							"host": [
 								"pcstate-accounts",
@@ -227,7 +227,7 @@
 								"api",
 								"v1",
 								"applications",
-								"create-application"
+								"create"
 							]
 						}
 					},
@@ -236,7 +236,7 @@
 			]
 		},
 		{
-			"name": "permissions",
+			"name": "application-permissions",
 			"item": [
 				{
 					"name": "register-permission",
@@ -269,7 +269,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/add-permission",
+							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/create",
 							"protocol": "http",
 							"host": [
 								"pcstate-accounts",
@@ -281,7 +281,8 @@
 								"v1",
 								"applications",
 								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
-								"add-permission"
+								"permissions",
+								"create"
 							]
 						}
 					},
@@ -303,7 +304,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/remove-permission/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/delete/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
 							"protocol": "http",
 							"host": [
 								"pcstate-accounts",
@@ -315,7 +316,8 @@
 								"v1",
 								"applications",
 								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
-								"remove-permission",
+								"permissions",
+								"delete",
 								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny"
 							],
 							"query": [
@@ -355,7 +357,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/grant-permission/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/grant/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
 							"protocol": "http",
 							"host": [
 								"pcstate-accounts",
@@ -367,7 +369,8 @@
 								"v1",
 								"users",
 								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
-								"grant-permission",
+								"permissions",
+								"grant",
 								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny"
 							]
 						}
@@ -395,7 +398,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/revoke-permission/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny/revoke",
 							"protocol": "http",
 							"host": [
 								"pcstate-accounts",
@@ -407,8 +410,9 @@
 								"v1",
 								"users",
 								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
-								"revoke-permission",
-								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny"
+								"permissions",
+								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+								"revoke"
 							]
 						}
 					},
