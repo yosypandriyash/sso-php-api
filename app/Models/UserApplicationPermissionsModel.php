@@ -13,4 +13,13 @@ class UserApplicationPermissionsModel extends UserApplicationPermissionsBaseMode
             'applicationPermissionId' => $applicationPermissionId,
         ]);
     }
+
+    public function getUserPermissionsByApplicationId(int $userId): array
+    {
+        return $this->getAll([
+            'userId' => $userId,
+            'isGranted' => true,
+            'deletedAt' => null
+        ]);
+    }
 }

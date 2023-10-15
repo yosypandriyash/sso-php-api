@@ -215,6 +215,7 @@ class BaseModel extends Model {
 
     public function getAll($options = [])
     {
+        $options = $this->parseMapperKeys($options);
         $result = $this->db->table($this->table)->getWhere($options)->getResult($this->returnType);
         return $this->parseResultToClassObject($result);
     }

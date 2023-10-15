@@ -6,8 +6,10 @@ use App\Models\UserApplicationPermissionsModel;
 use App\Persistence\Exception\CouldNotSaveException;
 use App\Persistence\MySql\MySqlDefinitions;
 use App\Persistence\MySql\MySqlModelToDomainEntityTransformer;
+use Core\Domain\Application\Application;
 use Core\Domain\ApplicationPermission\ApplicationPermission;
 use Core\Domain\User\User;
+use Core\Domain\UserPermission\GrantedPermissionsList;
 use Core\Domain\UserPermission\Infrastructure\UserPermissionRepositoryInterface;
 use Core\Domain\UserPermission\UserPermission;
 
@@ -68,5 +70,30 @@ class MySqlUserPermissionRepository extends UserApplicationPermissionsModel impl
         }
 
         return $userPermission;
+    }
+
+    public function getUserPermissionsByApplication(User $user, Application $application): GrantedPermissionsList
+    {
+        $userId = $user->getId()->getValue();
+        $applicationId = $application->getId()->getValue();
+
+        $permissions = $this->getUserPermissionsByApplicationId($userId);
+
+        $permissionsList = GrantedPermissionsList::create();
+
+        /** @var UserApplicationPermissionsModel $permissionModel */
+        foreach ($permissions as $permissionModel) {
+            /** @var UserPermission $permission */
+            $permission = MySqlModelToDomainEntityTransformer::execute(UserApplicationPermissionsModel::class, $permissionModel);
+
+            if ($permission->getApplicationPermission()->getApplication()->getId()->getValue() !== $applicationId) {
+                continue;
+            }
+
+            $permissionsList->add($permission);
+        }
+
+        return $permissionsList;
+
     }
 }

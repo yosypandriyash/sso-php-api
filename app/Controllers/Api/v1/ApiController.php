@@ -61,6 +61,10 @@ abstract class ApiController extends BaseController {
             }
 
             $mergeInto[$parameterName] = $this->request->getPost($parameterName) ?? null;
+
+            if ($mergeInto[$parameterName] === null) {
+                $mergeInto[$parameterName] = $this->request->getGet($parameterName) ?? null;
+            }
         }
 
         return $mergeInto;
