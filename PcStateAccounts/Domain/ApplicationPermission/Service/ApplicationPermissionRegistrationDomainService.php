@@ -2,13 +2,13 @@
 
 namespace Core\Domain\ApplicationPermission\Service;
 
-use App\Helpers\StringHelperInterface;
 use Core\Domain\Application\Exception\ApplicationNotFoundException;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\ApplicationPermission\ApplicationPermission;
 use Core\Domain\ApplicationPermission\Exception\ApplicationPermissionSameNameRegisteredException;
 use Core\Domain\ApplicationPermission\Infrastructure\ApplicationPermissionRepositoryInterface;
 use Core\Domain\BaseDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 
 class ApplicationPermissionRegistrationDomainService extends BaseDomainService {
 

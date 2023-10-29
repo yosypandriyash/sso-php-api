@@ -11,7 +11,7 @@ class UserAuthenticationViewController extends ViewController {
      */
     public function userLoginView(): string
     {
-        $this->setPage('Pages/Default/Auth/login.php');
+        $this->setPage('Pages/Default/Auth/login.view.php');
         return $this->view();
     }
 
@@ -20,7 +20,7 @@ class UserAuthenticationViewController extends ViewController {
      */
     public function userRegistrationView(): string
     {
-        $this->setPage('Pages/Default/Auth/register.php');
+        $this->setPage('Pages/Default/Auth/register.view.php');
         return $this->view();
     }
 
@@ -29,7 +29,7 @@ class UserAuthenticationViewController extends ViewController {
      */
     public function userForgottenPasswordView(): string
     {
-        $this->setPage('Pages/Default/Auth/reset-password.php');
+        $this->setPage('Pages/Default/Auth/reset-password.view.php');
         return $this->view();
     }
 }

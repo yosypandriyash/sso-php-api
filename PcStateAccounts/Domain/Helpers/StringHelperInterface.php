@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace Core\Domain\Helpers;
 
 interface StringHelperInterface {
 

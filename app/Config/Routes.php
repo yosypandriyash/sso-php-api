@@ -21,6 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -34,10 +35,20 @@ $routes->set404Override();
  */
 
 
+// Frontend-routes
+$routes->get('/auth/login', 'User\Authentication\UserAuthenticationViewController::userLoginView');
+$routes->get('/auth/register', 'User\Authentication\UserAuthenticationViewController::userRegistrationView');
+$routes->get('/auth/password-reset', 'User\Authentication\UserAuthenticationViewController::userRegistrationView');
+$routes->get('/auth/password-reset/(:alphanum)', 'Api\v1\User\UserDeleteController::index/$1', );
+
+// API Routes: (apiKey required)
 $routes->post('/api/v1/users/create', 'Api\v1\User\UserRegistrationController::index/$1');
 $routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
+
+$routes->post('/api/v1/users/reset-password/request', 'Api\v1\User\UserPasswordResetRequestController::index/$1');
+$routes->post('/api/v1/users/reset-password/(:alphanum)/update', 'Api\v1\User\UserDeleteController::index/$1');
 
 $routes->get('/api/v1/users/(:alphanum)/permissions/list', 'Api\v1\UserPermission\ListPermissionGrantedToUserController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/permissions/grant/(:alphanum)', 'Api\v1\UserPermission\GrantPermissionToUserController::index/$1/$2');

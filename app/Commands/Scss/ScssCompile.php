@@ -62,7 +62,7 @@ class ScssCompile extends BaseCommand
 		foreach ($cssLessConfig->filesConfig as $IOFile) {
 
 		    try {
-                $lessInputFile = realpath($viewPath . $IOFile['input']);
+                $lessInputFile = realpath($scssBasePath . $IOFile['input']);
                 $cssOutputFile = FCPATH . $IOFile['output'];
 
                 $scssFileContent = file_get_contents($lessInputFile);

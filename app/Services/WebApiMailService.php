@@ -92,26 +92,22 @@ class WebApiMailService extends MailService {
 
     public function send()
     {
-        try {
-            $curl = curl_init();
+        $curl = curl_init();
 
-            $request = [
-                "key" => $this->apiToken,
-                "messages" => $this->emailsList
-            ];
+        $request = [
+            "key" => $this->apiToken,
+            "messages" => $this->emailsList
+        ];
 
-            curl_setopt($curl, CURLOPT_URL, $this->apiBaseUrl);
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, ["q" => json_encode($request)]);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            $result = curl_exec($curl);
+        curl_setopt($curl, CURLOPT_URL, $this->apiBaseUrl);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, ["q" => json_encode($request)]);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
 
-            curl_close($curl);
+        curl_close($curl);
 
-            return json_decode($result, true);
-        } catch (\Exception $exception) {
-
-        }
+        return json_decode($result, true);
     }
 
 }

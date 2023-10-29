@@ -4,17 +4,17 @@ namespace App\Libraries;
 
 class MailTemplate {
 
-    // The priority of this email in relation to others:
+    // The priority of this email in relation to others
     // The lower the priority, the sooner it will be sent. e.g.
     // An email with priority 10 will be sent first even if one thousand
     // emails with priority 11 have been injected before.
     // Defaults to 10false,
-    private $priority = null;
+    private $priority = 10;
 
     // Set it to true to queue this email to be delivered as
     // soon as possible. (doesn't overrides priority setting).
     // Defaults to true.
-    private $isimmediate = null;
+    private $isimmediate = false;
 
     // Set it to true to make this email be sent right now,
     // without waiting for the next delivery call.
@@ -23,7 +23,7 @@ class MailTemplate {
     // a little while the SMTP connection is done. Use it in those
     // cases where you don't want your users to wait not even a
     // minute to receive your message. Defaults to false.
-    private $mustSendNow = null;
+    private $mustSendNow = true;
 
     // If specified, this message will be sent only when the given
     // timestamp has been reached. Leave it to false to send the
@@ -77,7 +77,7 @@ class MailTemplate {
     // the files you want to attach to your email.
     // See example.php for an specific description
     // on how to build this array._url = false,;
-    // {'path' : '__DIR__./frontend/gf', 'fileName' : 'logo_sma', 'encoding' : 'base64', 'type' : 'image/png' }
+    // {'path'
     private $attachments = null;
 
     // When set to true, Emailqueue will find all the <img ... />
@@ -99,7 +99,7 @@ class MailTemplate {
     /**
      * @return int
      */
-    public function getPriority(): int
+    public function getPriority()
     {
         return $this->priority;
     }
@@ -107,7 +107,7 @@ class MailTemplate {
     /**
      * @param int $priority
      */
-    public function setPriority(int $priority): void
+    public function setPriority(int $priority)
     {
         $this->priority = $priority;
     }
@@ -115,7 +115,7 @@ class MailTemplate {
     /**
      * @return bool
      */
-    public function isIsimmediate(): bool
+    public function isIsimmediate()
     {
         return $this->isimmediate;
     }
@@ -123,7 +123,7 @@ class MailTemplate {
     /**
      * @param bool $isimmediate
      */
-    public function setIsimmediate(bool $isimmediate): void
+    public function setIsimmediate(bool $isimmediate)
     {
         $this->isimmediate = $isimmediate;
     }
@@ -131,7 +131,7 @@ class MailTemplate {
     /**
      * @return bool
      */
-    public function isMustSendNow(): bool
+    public function isMustSendNow()
     {
         return $this->mustSendNow;
     }
@@ -139,7 +139,7 @@ class MailTemplate {
     /**
      * @param bool $mustSendNow
      */
-    public function setMustSendNow(bool $mustSendNow): void
+    public function setMustSendNow(bool $mustSendNow)
     {
         $this->mustSendNow = $mustSendNow;
     }
@@ -147,7 +147,7 @@ class MailTemplate {
     /**
      * @return bool
      */
-    public function getDateQueued(): bool
+    public function getDateQueued()
     {
         return $this->dateQueued;
     }
@@ -155,7 +155,7 @@ class MailTemplate {
     /**
      * @param bool $dateQueued
      */
-    public function setDateQueued(bool $dateQueued): void
+    public function setDateQueued(bool $dateQueued)
     {
         $this->dateQueued = $dateQueued;
     }
@@ -163,7 +163,7 @@ class MailTemplate {
     /**
      * @return bool
      */
-    public function isHtml(): bool
+    public function isHtml()
     {
         return $this->isHtml;
     }
@@ -171,7 +171,7 @@ class MailTemplate {
     /**
      * @param bool $isHtml
      */
-    public function setIsHtml(bool $isHtml): void
+    public function setIsHtml(bool $isHtml)
     {
         $this->isHtml = $isHtml;
     }
@@ -187,7 +187,7 @@ class MailTemplate {
     /**
      * @param null $from
      */
-    public function setFrom($from): void
+    public function setFrom($from)
     {
         $this->from = $from;
     }
@@ -203,7 +203,7 @@ class MailTemplate {
     /**
      * @param null $fromName
      */
-    public function setFromName($fromName): void
+    public function setFromName($fromName)
     {
         $this->fromName = $fromName;
     }
@@ -219,7 +219,7 @@ class MailTemplate {
     /**
      * @param null $setTo
      */
-    public function setSetTo($setTo): void
+    public function setSetTo($setTo)
     {
         $this->setTo = $setTo;
     }
@@ -235,7 +235,7 @@ class MailTemplate {
     /**
      * @param null $replyTo
      */
-    public function setReplyTo($replyTo): void
+    public function setReplyTo($replyTo)
     {
         $this->replyTo = $replyTo;
     }
@@ -251,7 +251,7 @@ class MailTemplate {
     /**
      * @param null $replyToName
      */
-    public function setReplyToName($replyToName): void
+    public function setReplyToName($replyToName)
     {
         $this->replyToName = $replyToName;
     }
@@ -267,7 +267,7 @@ class MailTemplate {
     /**
      * @param null $sender
      */
-    public function setSender($sender): void
+    public function setSender($sender)
     {
         $this->sender = $sender;
     }
@@ -283,7 +283,7 @@ class MailTemplate {
     /**
      * @param null $subject
      */
-    public function setSubject($subject): void
+    public function setSubject($subject)
     {
         $this->subject = $subject;
     }
@@ -299,7 +299,7 @@ class MailTemplate {
     /**
      * @param null $content
      */
-    public function setContent($content): void
+    public function setContent($content)
     {
         $this->content = $content;
     }
@@ -315,7 +315,7 @@ class MailTemplate {
     /**
      * @param null $contentNonHtml
      */
-    public function setContentNonHtml($contentNonHtml): void
+    public function setContentNonHtml($contentNonHtml)
     {
         $this->contentNonHtml = $contentNonHtml;
     }
@@ -331,7 +331,7 @@ class MailTemplate {
     /**
      * @param mixed $listUnsubscribe
      */
-    public function setListUnsubscribe($listUnsubscribe): void
+    public function setListUnsubscribe($listUnsubscribe)
     {
         $this->listUnsubscribe = $listUnsubscribe;
     }
@@ -339,7 +339,7 @@ class MailTemplate {
     /**
      * @return array
      */
-    public function getAttachments(): array
+    public function getAttachments()
     {
         return $this->attachments;
     }
@@ -347,7 +347,7 @@ class MailTemplate {
     /**
      * @param array $attachments
      */
-    public function setAttachments(array $attachments): void
+    public function setAttachments(array $attachments)
     {
         $this->attachments = $attachments;
     }
@@ -355,7 +355,7 @@ class MailTemplate {
     /**
      * @param array $file
      */
-    public function addAttachments(array $file): void
+    public function addAttachments(array $file)
     {
         $attachment = ["path" => $file['path']];
         if (isset($file['fileName'])) { $attachment['fileName'] = $file['fileName']; }
@@ -368,7 +368,7 @@ class MailTemplate {
     /**
      * @return bool
      */
-    public function isEmbedImages(): bool
+    public function isEmbedImages()
     {
         return $this->isEmbedImages;
     }
@@ -376,7 +376,7 @@ class MailTemplate {
     /**
      * @param bool $isEmbedImages
      */
-    public function setIsEmbedImages(bool $isEmbedImages): void
+    public function setIsEmbedImages(bool $isEmbedImages)
     {
         $this->isEmbedImages = $isEmbedImages;
     }
@@ -392,7 +392,7 @@ class MailTemplate {
     /**
      * @param null $customHeaders
      */
-    public function setCustomHeaders($customHeaders): void
+    public function setCustomHeaders($customHeaders)
     {
         $this->customHeaders = $customHeaders;
     }

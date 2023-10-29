@@ -2,11 +2,11 @@
 
 namespace Core\Application\Application\Create;
 
-use App\Helpers\StringHelperInterface;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationServiceInterface;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\Application\Service\ApplicationRegistrationDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 
 class ApplicationRegistrationService implements ApplicationServiceInterface {
 

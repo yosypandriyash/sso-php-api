@@ -2,10 +2,10 @@
 
 namespace Core\Domain\UserPermission\Service;
 
-use App\Helpers\StringHelperInterface;
 use Core\Domain\ApplicationPermission\Exception\ApplicationPermissionNotFoundException;
 use Core\Domain\ApplicationPermission\Infrastructure\ApplicationPermissionRepositoryInterface;
 use Core\Domain\BaseDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 use Core\Domain\User\Exception\UserNotFoundException;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
 use Core\Domain\UserPermission\Exception\UserPermissionAssignedYetException;

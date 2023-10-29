@@ -2,13 +2,13 @@
 
 namespace Core\Application\User\Create;
 
-use App\Helpers\StringHelperInterface;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
 use Core\Application\ApplicationServiceInterface;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\Application\Service\ApplicationValidationDomainService;
 use Core\Domain\ApplicationUser\Infrastructure\ApplicationUserRepositoryInterface;
+use Core\Domain\Helpers\StringHelperInterface;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
 use Core\Domain\User\Service\UserRegistrationDomainService;
 

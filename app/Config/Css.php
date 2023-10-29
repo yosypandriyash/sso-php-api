@@ -6,7 +6,7 @@ class Css
 
     public $filesConfig = [
         [
-            'input' => '/Assets/Scss/index.scss',
+            'input' => '/index.scss',
             'output' => 'assets/css/main.css'
         ],
         /* [

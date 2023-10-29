@@ -31,6 +31,22 @@ create table users(
     PRIMARY KEY (id)
 );
 
+create table user_password_reset_requests(
+    id int auto_increment not null,
+    user_id int not null,
+    unique_id varchar(96) unique not null,
+    origin_ip varchar(64) not null,
+    is_active boolean not null default 1,
+    expiration_date datetime not null,
+
+    created_at timestamp NOT NULL DEFAULT current_timestamp(),
+    updated_at datetime DEFAULT NULL,
+    deleted_at datetime DEFAULT NULL,
+
+    PRIMARY KEY (id),
+    foreign key(user_id) references users(id) on delete cascade on update cascade
+);
+
 create table application_users(
     id int auto_increment not null,
     unique_id varchar(96) unique not null,

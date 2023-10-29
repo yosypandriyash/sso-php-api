@@ -5,8 +5,7 @@ use App\Views\Models\Templates\ViewTemplateInterface;
 
 class ViewController extends BaseController
 {
-    public const DEV_ENVIRONMENT = 'DEVELOPMENT';
-    public const DEV_PRODUCTION = 'PRODUCTION';
+    public const DEV_ENVIRONMENT = 'development';
 
     private string $pageTitle;
     private string $pageMetaDescription;
@@ -17,7 +16,7 @@ class ViewController extends BaseController
     public function __construct()
     {
         // on development mode compile less files and clear cache
-        if (strtoupper(ENVIRONMENT) === self::DEV_ENVIRONMENT) {
+        if (self::DEV_ENVIRONMENT === env('CI_ENVIRONMENT')) {
             command('cache:clear');
             command('scss:compile');
         }

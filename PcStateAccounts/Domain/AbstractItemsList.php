@@ -2,7 +2,7 @@
 
 namespace Core\Domain;
 
-abstract class AbstractItemsList {
+abstract class AbstractItemsList implements ItemsListInterface {
 
     protected array $container = [];
 
@@ -21,10 +21,5 @@ abstract class AbstractItemsList {
     public function getAll(): array
     {
         return $this->container;
-    }
-
-    public function toArray(): array
-    {
-        return [];
     }
 }

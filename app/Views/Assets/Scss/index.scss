@@ -1,13 +1,5 @@
-@import 'devFolio/variables';
-@import 'devFolio/general';
-@import 'devFolio/header';
-@import 'devFolio/nav';
-@import 'devFolio/navbar';
-@import 'devFolio/hero';
-@import 'devFolio/sections';
-@import 'devFolio/blog';
-@import 'devFolio/footer';
-
-@import "layout/themme-dark";
+body {
+  background: #333;
+}
 
 @import "misc";

@@ -2,13 +2,13 @@
 
 namespace Core\Domain\User\Service;
 
-use App\Helpers\StringHelperInterface;
 use Core\Domain\Application\Exception\ApplicationNotFoundException;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\ApplicationUser\ApplicationUser;
 use Core\Domain\ApplicationUser\Exception\ApplicationUserDuplicatedException;
 use Core\Domain\ApplicationUser\Infrastructure\ApplicationUserRepositoryInterface;
 use Core\Domain\BaseDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 use Core\Domain\User\Exception\DuplicatedUserException;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
 use Core\Domain\User\User;

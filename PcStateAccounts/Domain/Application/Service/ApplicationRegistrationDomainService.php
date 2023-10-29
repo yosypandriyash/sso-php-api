@@ -2,11 +2,11 @@
 
 namespace Core\Domain\Application\Service;
 
-use App\Helpers\StringHelperInterface;
 use Core\Domain\Application\Application;
 use Core\Domain\Application\Exception\ApplicationSameNameExistsException;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\BaseDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 
 class ApplicationRegistrationDomainService extends BaseDomainService {
 

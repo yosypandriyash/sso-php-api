@@ -7,11 +7,13 @@ use App\Models\ApplicationsModel;
 use App\Models\ApplicationUsersModel;
 use App\Models\Base\BaseModel;
 use App\Models\UserApplicationPermissionsModel;
+use App\Models\UserPasswordResetRequestsModel;
 use App\Models\UsersModel;
 use Core\Domain\Application\Application;
 use Core\Domain\ApplicationPermission\ApplicationPermission;
 use Core\Domain\ApplicationUser\ApplicationUser;
 use Core\Domain\User\User;
+use Core\Domain\User\UserPasswordResetRequest;
 use Core\Domain\UserPermission\UserPermission;
 
 final class MySqlModelToDomainEntityTransformer {
@@ -21,6 +23,7 @@ final class MySqlModelToDomainEntityTransformer {
         ApplicationsModel::class => 'fromApplicationsModel',
         ApplicationUsersModel::class => 'fromApplicationUsersModel',
         ApplicationPermissionsModel::class => 'fromApplicationPermissionsModel',
+        UserPasswordResetRequestsModel::class => 'fromUserPasswordResetRequestsModel',
         UserApplicationPermissionsModel::class => 'fromUserApplicationPermissionsModel'
     ];
 
@@ -78,8 +81,16 @@ final class MySqlModelToDomainEntityTransformer {
         $applicationUser = ApplicationUser::create(
             $applicationUserModel->getId(),
             $applicationUserModel->getUniqueId(),
-            $applicationUserModel->getApplicationId(),
-            $applicationUserModel->getUserId()
+            self::fromApplicationsModel(
+                (new ApplicationsModel())->getOneById(
+                    $applicationUserModel->getApplicationId()
+                )
+            ),
+            self::fromUsersModel(
+                (new UsersModel())->getOneById(
+                    $applicationUserModel->getUserId()
+                )
+            ),
         );
 
         if ($applicationUserModel->getDeletedAt() !== null) {
@@ -134,5 +145,30 @@ final class MySqlModelToDomainEntityTransformer {
         }
 
         return $userPermission;
+    }
+
+    private static function fromUserPasswordResetRequestsModel(UserPasswordResetRequestsModel $userPasswordResetRequestsModel): UserPasswordResetRequest
+    {
+        $userPasswordResetRequest = UserPasswordResetRequest::create(
+            $userPasswordResetRequestsModel->getId(),
+            self::fromUsersModel(
+                (new UsersModel())->getOneById(
+                    $userPasswordResetRequestsModel->getUserId()
+                )
+            ),
+            $userPasswordResetRequestsModel->getUniqueId(),
+            $userPasswordResetRequestsModel->getOriginIp(),
+            $userPasswordResetRequestsModel->getIsActive(),
+            \DateTime::createFromFormat(
+                MySqlDefinitions::DATE_FORMAT,
+                $userPasswordResetRequestsModel->getExpirationDate()
+            ),
+        );
+
+        if ($userPasswordResetRequestsModel->getDeletedAt() !== null) {
+            $userPasswordResetRequest->setIsDeleted(true);
+        }
+
+        return $userPasswordResetRequest;
     }
 }

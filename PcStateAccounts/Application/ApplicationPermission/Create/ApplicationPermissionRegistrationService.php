@@ -2,7 +2,6 @@
 
 namespace Core\Application\ApplicationPermission\Create;
 
-use App\Helpers\StringHelperInterface;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
 use Core\Application\ApplicationServiceInterface;
@@ -10,6 +9,7 @@ use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
 use Core\Domain\Application\Service\ApplicationValidationDomainService;
 use Core\Domain\ApplicationPermission\Infrastructure\ApplicationPermissionRepositoryInterface;
 use Core\Domain\ApplicationPermission\Service\ApplicationPermissionRegistrationDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 
 class ApplicationPermissionRegistrationService implements ApplicationServiceInterface {
 

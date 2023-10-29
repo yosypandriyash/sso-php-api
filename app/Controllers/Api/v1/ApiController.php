@@ -93,4 +93,9 @@ abstract class ApiController extends BaseController {
             )
         );
     }
+
+    protected function cleanUrl(string $url): string
+    {
+        return str_replace('index.php/', '', $url);
+    }
 }

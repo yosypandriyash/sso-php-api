@@ -2,7 +2,6 @@
 
 namespace Core\Application\UserPermission\Revoke;
 
-use App\Helpers\StringHelperInterface;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
 use Core\Application\ApplicationServiceInterface;

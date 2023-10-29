@@ -2,7 +2,6 @@
 
 namespace Core\Application\UserPermission\Grant;
 
-use App\Helpers\StringHelperInterface;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
 use Core\Application\ApplicationServiceInterface;
@@ -11,6 +10,7 @@ use Core\Domain\Application\Service\ApplicationValidationDomainService;
 use Core\Domain\ApplicationPermission\Infrastructure\ApplicationPermissionRepositoryInterface;
 use Core\Domain\ApplicationUser\Infrastructure\ApplicationUserRepositoryInterface;
 use Core\Domain\ApplicationUser\Service\ApplicationUserValidationDomainService;
+use Core\Domain\Helpers\StringHelperInterface;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
 use Core\Domain\UserPermission\Infrastructure\UserPermissionRepositoryInterface;
 use Core\Domain\UserPermission\Service\GrantPermissionToUserDomainService;
