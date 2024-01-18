@@ -9,8 +9,10 @@ abstract class AbstractNotification implements NotificationInterface {
     protected ?string $subject = null;
     protected ?string $from = null;
     protected ?string $to = null;
+
     protected ?string $message = null;
     protected array $placeholders = [];
+    protected ?int $priority = null;
 
     protected function __construct(
     )
@@ -66,6 +68,11 @@ abstract class AbstractNotification implements NotificationInterface {
     {
         $this->placeholders = $placeholders;
         $this->replacePlaceholders();
+    }
+
+    public function getPriority(): int
+    {
+        return $this->priority;
     }
 
     private function replacePlaceholders(): void

@@ -4,6 +4,7 @@ namespace Core\Application\Notification\Template;
 
 class ResetPasswordRequestNotification extends AbstractNotification {
 
+    protected ?int $priority = 1;
     protected ?string $subject = 'Restablecimiento de clave';
 
     protected ?string $message = '

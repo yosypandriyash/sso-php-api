@@ -22,6 +22,10 @@ class MailNotificationSender implements NotificationSenderInterface {
             $mailTemplate->setFrom($notification->getFrom());
         }
 
+
+        $mailTemplate->setIsImmediate($notification->getPriority() === NotificationInterface::PRIORITY_MAX);
+        $mailTemplate->setPriority($notification->getPriority());
+
         $mailTemplate->setSetTo($notification->getTo());
         $mailTemplate->setSubject($notification->getSubject());
         $mailTemplate->setContent($notification->getMessage());
