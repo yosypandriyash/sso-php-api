@@ -1,10 +1,10 @@
 <?php
 
-namespace Core\Application\User\Reset;
+namespace Core\Application\User\PasswordReset\Validation;
 
 use Core\Application\ApplicationResponse;
 
-class UserPasswordResetRequestResponse extends ApplicationResponse {
+class UserPasswordResetValidationResponse extends ApplicationResponse {
 
     public static function create(array $data, bool $success, string $errorMessage = null): self
     {

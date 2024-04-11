@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Application\User\Reset;
+namespace Core\Application\User\PasswordReset\Request;
 
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
@@ -8,8 +8,6 @@ use Core\Application\ApplicationServiceInterface;
 use Core\Application\Notification\Infrastructure\NotificationSenderInterface;
 use Core\Application\Notification\Template\ResetPasswordRequestNotification;
 use Core\Domain\Application\Infrastructure\ApplicationRepositoryInterface;
-use Core\Domain\Application\Service\ApplicationValidationDomainService;
-use Core\Domain\ApplicationUser\Infrastructure\ApplicationUserRepositoryInterface;
 use Core\Domain\Helpers\StringHelperInterface;
 use Core\Domain\User\Infrastructure\UserPasswordResetRequestRepositoryInterface;
 use Core\Domain\User\Infrastructure\UserRepositoryInterface;
@@ -17,7 +15,6 @@ use Core\Domain\User\Service\UserPasswordResetRequestDomainService;
 
 class UserPasswordResetRequestService implements ApplicationServiceInterface {
     private NotificationSenderInterface $notificationSender;
-    private ApplicationValidationDomainService $applicationValidationDomainService;
     private UserPasswordResetRequestDomainService $userPasswordResetRequestDomainService;
 
     public function __construct(
@@ -30,10 +27,6 @@ class UserPasswordResetRequestService implements ApplicationServiceInterface {
     {
         $this->notificationSender = $notificationSender;
 
-        $this->applicationValidationDomainService = new ApplicationValidationDomainService(
-            $applicationRepository
-        );
-
         $this->userPasswordResetRequestDomainService = new UserPasswordResetRequestDomainService(
             $stringHelper,
             $userRepository,
@@ -45,12 +38,6 @@ class UserPasswordResetRequestService implements ApplicationServiceInterface {
     public function execute(ApplicationRequestInterface $request): ApplicationResponseInterface
     {
         try {
-            // Validate API-KEY for requested application
-            $this->applicationValidationDomainService->validateApplicationRequest(
-                $request->getAppUniqueId(),
-                $request->getApiKey()
-            );
-
             $passwordRequest = $this->userPasswordResetRequestDomainService->processUserPasswordResetRequest(
                 $request->getEmail(),
                 $request->getIpAddress()

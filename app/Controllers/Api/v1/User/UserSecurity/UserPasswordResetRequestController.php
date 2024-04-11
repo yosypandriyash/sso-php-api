@@ -1,27 +1,24 @@
 <?php
 
-namespace App\Controllers\Api\v1\User;
+namespace App\Controllers\Api\v1\User\UserSecurity;
 
-use App\Constraint\Application\ApplicationApiKeyConstraint;
-use App\Constraint\Application\AppUniqueIdConstraint;
 use App\Constraint\User\EmailConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
+use App\Controllers\Api\v1\User\UserApiController;
 use App\Helpers\StringHelper;
 use App\Notification\Mail\MailNotificationSender;
 use App\Persistence\MySql\Application\MySqlApplicationRepository;
 use App\Persistence\MySql\User\MySqlUserPasswordResetRequestRepository;
 use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\User\Reset\UserPasswordResetRequestRequest;
-use Core\Application\User\Reset\UserPasswordResetRequestService;
+use Core\Application\User\PasswordReset\Request\UserPasswordResetRequestRequest;
+use Core\Application\User\PasswordReset\Request\UserPasswordResetRequestService;
 
-class UserPasswordResetRequestController extends UserApiController {
-
-    private const PASSWORD_RESET_CALLBACK_URL = 'Api\v1\User\UserDeleteController::index';
+class UserPasswordResetRequestController extends UserApiController
+{
+    private const PASSWORD_RESET_CALLBACK_URL = 'user_password_reset_validation';
 
     protected array $requestParameters = [
-        'applicationUniqueId' => AppUniqueIdConstraint::class,
-        'applicationApiKey' => ApplicationApiKeyConstraint::class,
         'email' => EmailConstraint::class,
     ];
 
@@ -50,8 +47,6 @@ class UserPasswordResetRequestController extends UserApiController {
                 new StringHelper()
             ))->execute(
                 UserPasswordResetRequestRequest::create(
-                    $bodyParams['applicationUniqueId'],
-                    $bodyParams['applicationApiKey'],
                     $bodyParams['email'],
                     $this->request->getIPAddress(),
                     $passwordResetUrl,

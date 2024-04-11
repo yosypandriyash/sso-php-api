@@ -39,7 +39,6 @@ $routes->set404Override();
 $routes->get('/auth/login', 'User\Authentication\UserAuthenticationViewController::userLoginView');
 $routes->get('/auth/register', 'User\Authentication\UserAuthenticationViewController::userRegistrationView');
 $routes->get('/auth/password-reset', 'User\Authentication\UserAuthenticationViewController::userRegistrationView');
-$routes->get('/auth/password-reset/(:alphanum)', 'Api\v1\User\UserDeleteController::index/$1', );
 
 // API Routes: (apiKey required)
 $routes->post('/api/v1/users/create', 'Api\v1\User\UserRegistrationController::index/$1');
@@ -47,8 +46,11 @@ $routes->post('/api/v1/users/validate', 'Api\v1\User\UserValidationController::i
 $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
 
-$routes->post('/api/v1/users/reset-password/request', 'Api\v1\User\UserPasswordResetRequestController::index/$1');
+$routes->post('/api/v1/users/reset-password/request', 'Api\v1\User\UserSecurity\UserPasswordResetRequestController::index/$1');
 $routes->post('/api/v1/users/reset-password/(:alphanum)/update', 'Api\v1\User\UserDeleteController::index/$1');
+$routes->get('/api/v1/users/reset-password/confirm/(:alphanum)', 'Api\v1\User\UserSecurity\UserPasswordResetValidationController::index/$1', [
+    'as' => 'user_password_reset_validation'
+]);
 
 $routes->get('/api/v1/users/(:alphanum)/permissions/list', 'Api\v1\UserPermission\ListPermissionGrantedToUserController::index/$1');
 $routes->post('/api/v1/users/(:alphanum)/permissions/grant/(:alphanum)', 'Api\v1\UserPermission\GrantPermissionToUserController::index/$1/$2');
