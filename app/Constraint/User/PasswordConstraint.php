@@ -10,6 +10,6 @@ class PasswordConstraint extends BaseConstraint {
 
     public function validateField($param = null): bool
     {
-        return strlen(trim($param)) > 8;
+        return strlen(trim($param)) > 8 && strlen(trim($param)) < 128;
     }
 }

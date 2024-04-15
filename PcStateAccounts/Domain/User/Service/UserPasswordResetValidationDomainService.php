@@ -3,6 +3,11 @@
 namespace Core\Domain\User\Service;
 
 use Core\Domain\BaseDomainService;
+use Core\Domain\User\Exception\ExpiredUserPasswordRequestException;
+use Core\Domain\User\Exception\InactiveUserException;
+use Core\Domain\User\Exception\InactiveUserPasswordRequestException;
+use Core\Domain\User\Exception\InvalidUserPasswordResetTokenException;
+use Core\Domain\User\Exception\MismatchIpAddressUserPasswordRequestException;
 use Core\Domain\User\Infrastructure\UserPasswordResetRequestRepositoryInterface;
 
 class UserPasswordResetValidationDomainService extends BaseDomainService {
@@ -16,29 +21,41 @@ class UserPasswordResetValidationDomainService extends BaseDomainService {
         $this->userPasswordResetRequestRepository = $userPasswordResetRequestRepository;
     }
 
+    /**
+     * @throws ExpiredUserPasswordRequestException
+     * @throws InactiveUserException
+     * @throws InactiveUserPasswordRequestException
+     * @throws InvalidUserPasswordResetTokenException
+     * @throws MismatchIpAddressUserPasswordRequestException
+     */
     public function validateUserPasswordResetRequest(
         string $passwordResetRequestToken,
         string $ipAddress
-    ): bool
+    ): void
     {
-        try {
-            $passwordResetRequest = $this->userPasswordResetRequestRepository->getOneByUniqueId($passwordResetRequestToken);
 
-            if (!$passwordResetRequest) {
-                return false;
-            }
+        $passwordResetRequest = $this->userPasswordResetRequestRepository->getOneByUniqueId($passwordResetRequestToken);
 
-            $userActive = $passwordResetRequest->getUser()->isDeleted() === false;
+        if (!$passwordResetRequest) {
+            throw new InvalidUserPasswordResetTokenException();
+        }
 
-            return
-                $userActive === true &&
-                $passwordResetRequest->isActive() === true &&
-                $passwordResetRequest->getExpirationDate() >= new \DateTime() &&
-                $passwordResetRequest->getOriginIpAddress() === $ipAddress;
+        $userActive = $passwordResetRequest->getUser()->isDeleted() === false;
 
-        } catch (\Exception $exception) {
+        if (!$userActive) {
+            throw new InactiveUserException();
+        }
 
-            return false;
+        if (!$passwordResetRequest->isActive()) {
+            throw new InactiveUserPasswordRequestException();
+        }
+
+        if ($passwordResetRequest->getExpirationDate() < new \DateTime()) {
+            throw new ExpiredUserPasswordRequestException();
+        }
+
+        if ($passwordResetRequest->getOriginIpAddress() !== $ipAddress) {
+            throw new MismatchIpAddressUserPasswordRequestException();
         }
 
         // todo/update: Log this request

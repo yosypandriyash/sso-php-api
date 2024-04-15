@@ -5,6 +5,7 @@ namespace Core\Application\User\PasswordReset\Validation;
 use Core\Application\ApplicationRequestInterface;
 use Core\Application\ApplicationResponseInterface;
 use Core\Application\ApplicationServiceInterface;
+use Core\Domain\User\Exception\InvalidUserPasswordResetTokenException;
 use Core\Domain\User\Infrastructure\UserPasswordResetRequestRepositoryInterface;
 use Core\Domain\User\Service\UserPasswordResetValidationDomainService;
 
@@ -24,15 +25,14 @@ class UserPasswordResetValidationService implements ApplicationServiceInterface 
     public function execute(ApplicationRequestInterface $request): ApplicationResponseInterface
     {
         try {
-            $passwordRequestValidation = $this->userPasswordResetValidationDomainService->validateUserPasswordResetRequest(
+            $this->userPasswordResetValidationDomainService->validateUserPasswordResetRequest(
                 $request->getResetPasswordToken(),
                 $request->getIpAddress()
             );
 
-
             return UserPasswordResetValidationResponse::create(
                 [],
-                $passwordRequestValidation
+                true
             );
 
         } catch (\Exception $exception) {

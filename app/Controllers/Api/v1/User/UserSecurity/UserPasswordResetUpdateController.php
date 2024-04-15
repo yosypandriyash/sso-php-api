@@ -2,18 +2,20 @@
 
 namespace App\Controllers\Api\v1\User\UserSecurity;
 
+use App\Constraint\User\PasswordConstraint;
 use App\Constraint\User\UserPasswordResetTokenConstraint;
 use App\Controllers\Api\v1\Response\XhrResponse;
 use App\Controllers\Api\v1\User\UserApiController;
-use App\Persistence\MySql\MySqlDefinitions;
 use App\Persistence\MySql\User\MySqlUserPasswordResetRequestRepository;
+use App\Persistence\MySql\User\MySqlUserRepository;
 use CodeIgniter\HTTP\ResponseInterface;
-use Core\Application\User\PasswordReset\Validation\UserPasswordResetValidationRequest;
-use Core\Application\User\PasswordReset\Validation\UserPasswordResetValidationService;
+use Core\Application\User\PasswordReset\Update\UserPasswordResetUpdateRequest;
+use Core\Application\User\PasswordReset\Update\UserPasswordResetUpdateService;
 
-class UserPasswordResetValidationController extends UserApiController
+class UserPasswordResetUpdateController extends UserApiController
 {
     protected array $requestParameters = [
+        'newPassword' => PasswordConstraint::class,
         'passwordResetToken' => UserPasswordResetTokenConstraint::class,
     ];
 
@@ -34,11 +36,13 @@ class UserPasswordResetValidationController extends UserApiController
                 return $this->constraintViolationResponse($validationResult);
             }
 
-            $applicationServiceResponse = (new UserPasswordResetValidationService(
+            $applicationServiceResponse = (new UserPasswordResetUpdateService(
+                new MySqlUserRepository(),
                 new MySqlUserPasswordResetRequestRepository(),
             ))->execute(
-                UserPasswordResetValidationRequest::create(
+                UserPasswordResetUpdateRequest::create(
                     $this->request->getIPAddress(),
+                    $bodyParams['newPassword'],
                     $passwordResetToken
                 )
             );
@@ -56,7 +60,7 @@ class UserPasswordResetValidationController extends UserApiController
 
         $apiResponse = new XhrResponse();
         $apiResponse->setOperationStatus(
-            $success ? 'PASSWORD_RESET_REQUEST_VALIDATION_SUCCESS' : 'PASSWORD_RESET_REQUEST_VALIDATION_ERROR',
+            $success ? 'PASSWORD_UPDATED_SUCCESS' : 'PASSWORD_UPDATE_FAILED',
             $result
         );
 
@@ -68,5 +72,3 @@ class UserPasswordResetValidationController extends UserApiController
     }
 
 }
-
-// http://pcstate-accounts.web.local/api/v1/users/reset-password/confirm/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt

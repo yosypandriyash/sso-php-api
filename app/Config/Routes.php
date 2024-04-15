@@ -47,7 +47,7 @@ $routes->post('/api/v1/users/(:alphanum)/update', 'Api\v1\User\UserUpdateControl
 $routes->post('/api/v1/users/(:alphanum)/delete', 'Api\v1\User\UserDeleteController::index/$1');
 
 $routes->post('/api/v1/users/reset-password/request', 'Api\v1\User\UserSecurity\UserPasswordResetRequestController::index/$1');
-$routes->post('/api/v1/users/reset-password/(:alphanum)/update', 'Api\v1\User\UserDeleteController::index/$1');
+$routes->post('/api/v1/users/reset-password/(:alphanum)/update', 'Api\v1\User\UserSecurity\UserPasswordResetUpdateController::index/$1');
 $routes->get('/api/v1/users/reset-password/confirm/(:alphanum)', 'Api\v1\User\UserSecurity\UserPasswordResetValidationController::index/$1', [
     'as' => 'user_password_reset_validation'
 ]);
