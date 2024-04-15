@@ -44,6 +44,40 @@
 					"response": []
 				},
 				{
+					"name": "password-reset-request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "yosyp.andriyash@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/reset-password/request",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"reset-password",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "delete-user",
 					"request": {
 						"method": "POST",
@@ -180,6 +214,66 @@
 								"v1",
 								"users",
 								"create-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password-reset-update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "newPassword",
+									"value": "miNuevaContraseña2024",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/reset-password/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt/update",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"reset-password",
+								"b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password-reset-validate-request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/reset-password/confirm/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"reset-password",
+								"confirm",
+								"b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt"
 							]
 						}
 					},
@@ -413,6 +507,41 @@
 								"permissions",
 								"EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
 								"revoke"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-application-permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/list?applicationUniqueId=D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa&applicationApiKey=vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+							"protocol": "http",
+							"host": [
+								"pcstate-accounts",
+								"web",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
+								"permissions",
+								"list"
+							],
+							"query": [
+								{
+									"key": "applicationUniqueId",
+									"value": "D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa"
+								},
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun"
+								}
 							]
 						}
 					},
