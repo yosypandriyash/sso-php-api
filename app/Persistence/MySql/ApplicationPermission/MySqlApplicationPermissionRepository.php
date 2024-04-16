@@ -6,7 +6,9 @@ use App\Models\ApplicationPermissionsModel;
 use App\Persistence\Exception\CouldNotSaveException;
 use App\Persistence\MySql\MySqlDefinitions;
 use App\Persistence\MySql\MySqlModelToDomainEntityTransformer;
+use Core\Domain\Application\Application;
 use Core\Domain\ApplicationPermission\ApplicationPermission;
+use Core\Domain\ApplicationPermission\ApplicationPermissionsList;
 use Core\Domain\ApplicationPermission\Infrastructure\ApplicationPermissionRepositoryInterface;
 use Exception;
 
@@ -61,5 +63,30 @@ class MySqlApplicationPermissionRepository extends ApplicationPermissionsModel i
         return $applicationPermissionModel !== null ? MySqlModelToDomainEntityTransformer::execute(
             ApplicationPermissionsModel::class, $applicationPermissionModel
         ): null;
+    }
+
+    public function getAllApplicationPermissions(
+        Application $application
+    ): ApplicationPermissionsList
+    {
+        $applicationId = $application->getId()->getValue();
+        $applicationPermissionsList = ApplicationPermissionsList::create();
+
+        $applicationPermissions = $this->getAll([
+            'applicationId' => $applicationId
+        ]);
+
+        /** @var ApplicationPermissionsModel $applicationPermissionModel */
+        foreach ($applicationPermissions as $applicationPermissionModel) {
+
+            /** @var ApplicationPermission $applicationPermission */
+            $applicationPermission = MySqlModelToDomainEntityTransformer::execute(
+                ApplicationPermissionsModel::class, $applicationPermissionModel
+            );
+
+            $applicationPermissionsList->add($applicationPermission);
+        }
+
+        return $applicationPermissionsList;
     }
 }

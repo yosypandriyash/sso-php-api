@@ -3,7 +3,9 @@
 namespace Core\Domain\ApplicationPermission\Infrastructure;
 
 
+use Core\Domain\Application\Application;
 use Core\Domain\ApplicationPermission\ApplicationPermission;
+use Core\Domain\ApplicationPermission\ApplicationPermissionsList;
 
 interface ApplicationPermissionRepositoryInterface {
 
@@ -15,5 +17,9 @@ interface ApplicationPermissionRepositoryInterface {
         int $applicationId,
         string $permissionName
     ): int;
+
+    public function getAllApplicationPermissions(
+        Application $application
+    ): ApplicationPermissionsList;
 
 }
