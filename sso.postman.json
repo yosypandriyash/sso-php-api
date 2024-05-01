@@ -25,16 +25,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z/update",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z/update",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z",
 								"update"
@@ -59,16 +57,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/reset-password/request",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/reset-password/request",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"reset-password",
 								"request"
@@ -83,16 +79,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z/delete",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z/delete",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"oejxElvsRmhMQedc4pTKNGg3bk6wXBHj42Ifz9VO2uC5SlDMLpB0Pk60AhFn13ADcYd7I5SyKUJsGqrvWqwytzfam7inQ91Z",
 								"delete"
@@ -144,16 +138,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/validate",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/validate",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"validate"
 							]
@@ -202,16 +194,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/create-user",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/create-user",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"create-user"
 							]
@@ -235,16 +225,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/reset-password/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt/update",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/reset-password/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt/update",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"reset-password",
 								"b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt",
@@ -260,16 +248,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/reset-password/confirm/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/reset-password/confirm/b0nhS3b0ncTwhS3hS3cTwfF1gS1b0nea956euq7ZkwfCJrMzmP8S12QxOKDHlAVI4YEcsdp6bWRi03FTB5vL9GanXNhyogUt",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"reset-password",
 								"confirm",
@@ -310,16 +296,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/applications/create",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/applications/create",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"applications",
 								"create"
 							]
@@ -363,16 +347,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/create",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/create",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"applications",
 								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
 								"permissions",
@@ -398,16 +380,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/delete/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/delete/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"applications",
 								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
 								"permissions",
@@ -419,6 +399,35 @@
 									"key": "applicationApiKey",
 									"value": "",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/applications/D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa/permissions/list?applicationApiKey=vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}{{port}}"
+							],
+							"path": [
+								"{{api-path}}",
+								"{{api-version}}",
+								"applications",
+								"D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa",
+								"permissions",
+								"list"
+							],
+							"query": [
+								{
+									"key": "applicationApiKey",
+									"value": "vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun"
 								}
 							]
 						}
@@ -451,16 +460,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/grant/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/grant/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
 								"permissions",
@@ -492,16 +499,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny/revoke",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/EoBC8UmuphM54bjuCBh0ovKtVHcrdpUNZL4GxTqNHwJg6KwbY0rS7lT3lzS2ffYiXMZ8g5yRVeFczIidnLqJGjW1WD7QaAny/revoke",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
 								"permissions",
@@ -518,16 +523,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://pcstate-accounts.web.local/api/v1/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/list?applicationUniqueId=D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa&applicationApiKey=vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
-							"protocol": "http",
+							"raw": "{{protocol}}://{{domain}}{{port}}/{{api-path}}/{{api-version}}/users/qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF/permissions/list?applicationUniqueId=D27eMoieZnh8TfCfUD5TIsHaMw4tPpbFjdLq3NZiSPcKFQsuYwOkcVljLSY9NOWz6byvg321oruWCxRr1GJyEXBvGk6AAzIa&applicationApiKey=vP825LhtBsTzK4bSP9JnDrue2COzFUyEewjQM3GlE5C8hVVo7Y4pm0JRkGSlx66NZpQHMrLW7ifN3iIRkgWawDsT0qdXUFun",
+							"protocol": "{{protocol}}",
 							"host": [
-								"pcstate-accounts",
-								"web",
-								"local"
+								"{{domain}}{{port}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{api-path}}",
+								"{{api-version}}",
 								"users",
 								"qUIyY6FsoYhobjyLGznadtxOgkj5reNRtTPCEXUZlEHO67QPdHsvVa4ZepRu1ATbzSwMKQ3x2Ac3kIV19i87fJ2mg0mXWGSF",
 								"permissions",

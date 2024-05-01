@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  pcstate_accounts-php:
+    container_name: pcstate_accounts-php
+    image: php:8.2-fpm-alpine
+    volumes:
+      - ./:/app
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: ./docker/php-fpm/Dockerfile
+
+  pcstate_accounts-nginx:
+    container_name: pcstate_accounts-nginx
+    image: nginx:latest
+    ports:
+      - 8006:80
+    volumes:
+      - ./:/app
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
